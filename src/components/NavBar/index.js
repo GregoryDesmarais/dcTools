@@ -7,10 +7,10 @@ function NavBar() {
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href='/'>DC Tools</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href='/'>Home</Nav.Link>
-                <Nav.Link href='/handoff'>Shift Handoff</Nav.Link>
-                <Nav.Link href='/amber'>Amber Lights</Nav.Link>
-                <Nav.Link href='/cardboard'>Cardboard Tool</Nav.Link>
+                <Nav.Link href='/dcTools/'>Home</Nav.Link>
+                <Nav.Link href='/dcTools/handoff'>Shift Handoff</Nav.Link>
+                <Nav.Link href='/dcTools/amber'>Amber Lights</Nav.Link>
+                <Nav.Link href='/dcTools/cardboard'>Cardboard Tool</Nav.Link>
             </Nav>
         </Navbar>
     );

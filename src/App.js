@@ -14,11 +14,11 @@ function App() {
       <div>
         <NavBar />
         <Switch>
-          <Route exact path="/" component={Main} />
-          {/* <Route exact path="/handoff" component={Handoff} /> */}
-          {/* <Route exact path="/handoff/create" component={HandoffCreate} /> */}
-          <Route exact path="/amber" component={Amber} />
-          <Route exact path="/cardboard" component={Cardboard} />
+          <Route exact path="/dcTools/" component={Main} />
+          {/* <Route exact path="/dcTools/handoff" component={Handoff} /> */}
+          {/* <Route exact path="/dcTools/handoff/create" component={HandoffCreate} /> */}
+          <Route exact path="/dcTools/amber" component={Amber} />
+          <Route exact path="/dcTools/cardboard" component={Cardboard} />
         </Switch>
         </div>
     </Router>

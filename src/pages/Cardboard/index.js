@@ -58,8 +58,6 @@ render() {
                             </Form.Control>
                         </Form.Group>
                     </Col>
-                </Form.Row>
-                <Form.Row>
                     <Col lg={5}>
                         <Form.Group controlId="cab">
                             <Form.Label>Cabinet Location</Form.Label>
@@ -74,8 +72,6 @@ render() {
                             <Form.Control onChange={this.handleInputChange} placeholder="Joe Customer" />
                         </Form.Group>
                     </Col>
-                </Form.Row>
-                <Form.Row>
                     <Col lg={5}>
                         <Form.Group controlId="dc">
                             <Form.Label>Data Center</Form.Label>

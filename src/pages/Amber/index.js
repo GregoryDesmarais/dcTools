@@ -67,8 +67,6 @@ class Main extends Component {
                                 </Form.Control>
                             </Form.Group>
                         </Col>
-                    </Form.Row>
-                    <Form.Row>
                         <Col lg={5}>
                             <Form.Group controlId="cab">
                                 <Form.Label>Cabinet Location</Form.Label>
@@ -83,8 +81,6 @@ class Main extends Component {
                                 <Form.Control onChange={this.handleInputChange} placeholder="42" />
                             </Form.Group>
                         </Col>
-                    </Form.Row>
-                    <Form.Row>
                         <Col lg={5}>
                             <Form.Group controlId="customer">
                                 <Form.Label>Customer</Form.Label>
@@ -99,8 +95,6 @@ class Main extends Component {
                                 <Form.Control onChange={this.handleInputChange} placeholder="Dell PE 1950" />
                             </Form.Group>
                         </Col>
-                    </Form.Row>
-                    <Form.Row>
                         <Col lg={5}>
                             <Form.Group controlId="label">
                                 <Form.Label>Device Label</Form.Label>
@@ -115,8 +109,6 @@ class Main extends Component {
                                 <Form.Control onChange={this.handleInputChange} placeholder="123456" />
                             </Form.Group>
                         </Col>
-                    </Form.Row>
-                    <Form.Row>
                         <Col lg={5}>
                             <Form.Group controlId="alert">
                                 <Form.Label>Alert</Form.Label>

@@ -6,6 +6,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button'
 
+
 class Cardboard extends Component {
 
     state = {
@@ -17,7 +18,7 @@ class Cardboard extends Component {
     }
 
     handleInputChange = event => {
-        const {id, value} = event.target;
+        const { id, value } = event.target;
         this.setState({
             [id]: value
         });
@@ -35,66 +36,66 @@ class Cardboard extends Component {
         Item found: ${this.state.items}
         Please feel free to respond within this ticket or contact us directly regarding this request:
         Thank you, 
-        `)
+        `);
     }
 
 
-    render() {
-        return (
-            <Container>
-                <Jumbotron>
-                    <h1 className='text-center'>Cardboard Report Generator</h1>
-                </Jumbotron>
-                <Form>
-                    <Form.Row>
-                        <Col lg={5}>
-                            <Form.Group controlId="user">
-                                <Form.Label>Select User</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} as="select" value="Choose...">
-                                    <option value="">Select User</option>
-                                    <option value="greg@test.com">Greg</option>
-                                    <option value="joe@test.com">Joe</option>
-                                </Form.Control>
-                            </Form.Group>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={5}>
-                            <Form.Group controlId="cab">
-                                <Form.Label>Cabinet Location</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="AZ-01" />
-                            </Form.Group>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={5}>
-                            <Form.Group controlId="customer">
-                                <Form.Label>Customer</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="Joe Customer" />
-                            </Form.Group>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={5}>
-                            <Form.Group controlId="dc">
-                                <Form.Label>Data Center</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="CLT" />
-                            </Form.Group>
-                        </Col>
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={5}>
-                            <Form.Group controlId="items">
-                                <Form.Label>Items</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="Small Cardboard Box" />
-                            </Form.Group>
-                        </Col>
-                    </Form.Row>
-                    <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>Submit</Button>
-                </Form>
-            </Container>
-        );
-    }
+render() {
+    return (
+        <Container>
+            <Jumbotron>
+                <h1 className='text-center'>Cardboard Report Generator</h1>
+            </Jumbotron>
+            <Form>
+                <Form.Row>
+                    <Col lg={5}>
+                        <Form.Group controlId="user">
+                            <Form.Label>Select User</Form.Label>
+                            <Form.Control onChange={this.handleInputChange} as="select" value="Choose...">
+                                <option value="">Select User</option>
+                                <option value="nihika7263@xmailsme.com">Greg</option>
+                                <option value="joe@test.com">Joe</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col lg={5}>
+                        <Form.Group controlId="cab">
+                            <Form.Label>Cabinet Location</Form.Label>
+                            <Form.Control onChange={this.handleInputChange} placeholder="AZ-01" />
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col lg={5}>
+                        <Form.Group controlId="customer">
+                            <Form.Label>Customer</Form.Label>
+                            <Form.Control onChange={this.handleInputChange} placeholder="Joe Customer" />
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col lg={5}>
+                        <Form.Group controlId="dc">
+                            <Form.Label>Data Center</Form.Label>
+                            <Form.Control onChange={this.handleInputChange} placeholder="CLT" />
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Form.Row>
+                    <Col lg={5}>
+                        <Form.Group controlId="items">
+                            <Form.Label>Items</Form.Label>
+                            <Form.Control onChange={this.handleInputChange} placeholder="Small Cardboard Box" />
+                        </Form.Group>
+                    </Col>
+                </Form.Row>
+                <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>Submit</Button>
+            </Form>
+        </Container>
+    );
+}
 }
 
 export default Cardboard;

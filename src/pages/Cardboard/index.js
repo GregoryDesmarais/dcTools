@@ -46,7 +46,7 @@ class Cardboard extends Component {
                 <Jumbotron>
                     <h1 className='text-center'>Cardboard Report Generator</h1>
                 </Jumbotron>
-                <Form>
+                <Form autoComplete="off">
                     <Form.Row>
                         <Col lg={1}/>
                         <Col lg={5}>
@@ -62,7 +62,7 @@ class Cardboard extends Component {
                         <Col lg={5}>
                             <Form.Group controlId="cab">
                                 <Form.Label>Cabinet Location</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="AZ-01" />
+                                <Form.Control name='dcCab' onChange={this.handleInputChange} placeholder="AZ-01" />
                             </Form.Group>
                         </Col>
                         <Col lg={1}/>
@@ -72,13 +72,13 @@ class Cardboard extends Component {
                         <Col lg={5}>
                             <Form.Group controlId="customer">
                                 <Form.Label>Customer</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="Joe Customer" />
+                                <Form.Control name='dcCust' onChange={this.handleInputChange} placeholder="Joe Customer" />
                             </Form.Group>
                         </Col>
                         <Col lg={5}>
                             <Form.Group controlId="dc">
                                 <Form.Label>Data Center</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="CLT" />
+                                <Form.Control name='dcLoc' onChange={this.handleInputChange} placeholder="CLT" />
                             </Form.Group>
                         </Col>
                         <Col lg={1}/>
@@ -88,7 +88,7 @@ class Cardboard extends Component {
                         <Col lg={5}>
                             <Form.Group controlId="items">
                                 <Form.Label>Items</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="Small Cardboard Box" />
+                                <Form.Control name='dcItems' onChange={this.handleInputChange} placeholder="Small Cardboard Box" />
                             </Form.Group>
                         </Col>
                         <Col lg={1}/>

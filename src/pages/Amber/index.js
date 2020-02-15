@@ -61,7 +61,7 @@ class Main extends Component {
                         <Col lg={5}>
                             <Form.Group controlId="user">
                                 <Form.Label>Select User</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} as="select" value="Choose...">
+                                <Form.Control name="dcuser" onChange={this.handleInputChange} as="select" value="Choose...">
                                     <option value="">Select User</option>
                                     <option value="greg@test.com">Greg</option>
                                     <option value="joe@test.com">Joe</option>
@@ -71,7 +71,7 @@ class Main extends Component {
                         <Col lg={5}>
                             <Form.Group controlId="cab">
                                 <Form.Label>Cabinet Location</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="AZ-01" />
+                                <Form.Control name="dccab" onChange={this.handleInputChange} placeholder="AZ-01" />
                             </Form.Group>
                         </Col>
                         <Col lg={1} />
@@ -81,13 +81,13 @@ class Main extends Component {
                         <Col lg={5}>
                             <Form.Group controlId="rmu">
                                 <Form.Label>RMU</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="42" />
+                                <Form.Control name="dcrmu" onChange={this.handleInputChange} placeholder="42" />
                             </Form.Group>
                         </Col>
                         <Col lg={5}>
                             <Form.Group controlId="customer">
                                 <Form.Label>Customer</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="Joe Customer" />
+                                <Form.Control name="dccustomer" onChange={this.handleInputChange} placeholder="Joe Customer" />
                             </Form.Group>
                         </Col>
                         <Col lg={1} />
@@ -97,13 +97,13 @@ class Main extends Component {
                         <Col lg={5}>
                             <Form.Group controlId="device">
                                 <Form.Label>Device Type</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="Dell PE 1950" />
+                                <Form.Control name="dcdevice" onChange={this.handleInputChange} placeholder="Dell PE 1950" />
                             </Form.Group>
                         </Col>
                         <Col lg={5}>
                             <Form.Group controlId="label">
                                 <Form.Label>Device Label</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="Server01" />
+                                <Form.Control name="dclabel" onChange={this.handleInputChange} placeholder="Server01" />
                             </Form.Group>
                         </Col>
                         <Col lg={1} />
@@ -113,13 +113,13 @@ class Main extends Component {
                         <Col lg={5}>
                             <Form.Group controlId="serial">
                                 <Form.Label>SN/Service Tag</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="123456" />
+                                <Form.Control name="dcserial" onChange={this.handleInputChange} placeholder="123456" />
                             </Form.Group>
                         </Col>
                         <Col lg={5}>
                             <Form.Group controlId="alert">
                                 <Form.Label>Alert</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} placeholder="Amber Light On" />
+                                <Form.Control name="dcalert" onChange={this.handleInputChange} placeholder="Amber Light On" />
                             </Form.Group>
                         </Col>
                         <Col lg={1} />

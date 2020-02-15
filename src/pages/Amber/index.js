@@ -20,7 +20,7 @@ class Main extends Component {
     }
 
     handleInputChange = event => {
-        const {id, value} = event.target;
+        const { id, value } = event.target;
         this.setState({
             [id]: value
         });
@@ -57,6 +57,7 @@ class Main extends Component {
                 </Jumbotron>
                 <Form>
                     <Form.Row>
+                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="user">
                                 <Form.Label>Select User</Form.Label>
@@ -73,8 +74,10 @@ class Main extends Component {
                                 <Form.Control onChange={this.handleInputChange} placeholder="AZ-01" />
                             </Form.Group>
                         </Col>
+                        <Col lg={1} />
                     </Form.Row>
                     <Form.Row>
+                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="rmu">
                                 <Form.Label>RMU</Form.Label>
@@ -87,8 +90,10 @@ class Main extends Component {
                                 <Form.Control onChange={this.handleInputChange} placeholder="Joe Customer" />
                             </Form.Group>
                         </Col>
+                        <Col lg={1} />
                     </Form.Row>
                     <Form.Row>
+                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="device">
                                 <Form.Label>Device Type</Form.Label>
@@ -101,8 +106,10 @@ class Main extends Component {
                                 <Form.Control onChange={this.handleInputChange} placeholder="Server01" />
                             </Form.Group>
                         </Col>
+                        <Col lg={1} />
                     </Form.Row>
                     <Form.Row>
+                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="serial">
                                 <Form.Label>SN/Service Tag</Form.Label>
@@ -115,8 +122,15 @@ class Main extends Component {
                                 <Form.Control onChange={this.handleInputChange} placeholder="Amber Light On" />
                             </Form.Group>
                         </Col>
+                        <Col lg={1} />
                     </Form.Row>
-                    <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>Submit</Button>
+                    <Form.Row>
+                        <Col lg={4} />
+                        <Col lg={4} className="text-center">
+                            <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>Submit</Button>
+                        </Col>
+                        <Col lg={4} />
+                    </Form.Row>
                 </Form>
             </Container>
         );

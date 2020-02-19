@@ -28,6 +28,13 @@ module.exports = {
       })
     })
   },
+  getUsers: function(req, res) {
+    User.find({},{username:1}, (err, data) => {
+      if(err) return err;
+      // console.log(data);
+      return res.json(data)
+    })
+  },
   createUser: function (req, res) {
     let body = req.body.data;
     User
@@ -46,6 +53,24 @@ module.exports = {
         res.status(200).send("User successfully created.")
       })
   },
+  removeUser: function (req, res) {
+    let body = req.body.data;
+    User
+      .findByIdAndDelete({
+        _id: body._id
+      }, (err, success) => {
+        if (err) {
+          if (err.code === 11000) {
+            res.status(422).json(err)
+          } else {
+            res.status(500).json(err)
+          }
+        }
+        // console.log(success)
+        res.status(200).send("User successfully removed.")
+      })
+  },
+
   //Back-end method to verify token.
   verifyToken: (req, res) => {
     //Store jwt.verify to check.  This will be an object that contains the payload, in this case, the username.

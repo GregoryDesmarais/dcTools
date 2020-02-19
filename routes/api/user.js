@@ -10,4 +10,10 @@ router.route("/register")
 router.route("/verify")
   .post(userController.verifyToken);
 
+router.route("/get")
+  .post(userController.getUsers);
+
+router.route("/remove")
+  .post(userController.removeUser);
+
 module.exports = router;

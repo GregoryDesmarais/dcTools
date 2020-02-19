@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+const bcrypt= require("bcrypt");
 require("dotenv").config();
 
 // Defining methods for the userController
@@ -28,6 +29,7 @@ module.exports = {
       })
     })
   },
+
   getUsers: function(req, res) {
     User.find({},{username:1}, (err, data) => {
       if(err) return err;
@@ -35,12 +37,14 @@ module.exports = {
       return res.json(data)
     })
   },
+
   createUser: function (req, res) {
     let body = req.body.data;
-    User
+    bcrypt.hash(body.password, 10, function(err, hash){
+      User
       .create({
         username: body.username,
-        password: body.password
+        password: hash
       }, (err, success) => {
         if (err) {
           if (err.code === 11000) {
@@ -52,7 +56,9 @@ module.exports = {
         // console.log(success)
         res.status(200).send("User successfully created.")
       })
+    })
   },
+
   removeUser: function (req, res) {
     let body = req.body.data;
     User

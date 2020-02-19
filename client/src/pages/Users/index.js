@@ -95,7 +95,7 @@ class Main extends Component {
                         <Col>
                             <Form.Group controlId="password">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control name="dcAddUserPass" onChange={this.handleInputChange} placeholder="password" value={this.state.password} />
+                                <Form.Control name="dcAddUserPass" onChange={this.handleInputChange} placeholder="Password" value={this.state.password} />
                             </Form.Group>
                         </Col>
                     </Form.Row>

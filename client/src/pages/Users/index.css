@@ -1,0 +1,11 @@
+.row {
+    padding: .5em 0em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.jumbotron {
+    background-color: transparent;
+}

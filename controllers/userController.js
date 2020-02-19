@@ -2,7 +2,7 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-// Defining methods for the furnitureController
+// Defining methods for the userController
 module.exports = {
   validateUser: function (req, res) {
     let username = req.body.data.username;

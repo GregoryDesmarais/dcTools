@@ -11,6 +11,7 @@ function NavBar() {
                 <Nav.Link href='/handoff'>Shift Handoff</Nav.Link>
                 <Nav.Link href='/amber'>Amber Lights</Nav.Link>
                 <Nav.Link href='/cardboard'>Cardboard Tool</Nav.Link>
+                <Nav.Link href='/users'>Users</Nav.Link>
             </Nav>
         </Navbar>
     );

@@ -46,7 +46,7 @@ class Handoff extends Component {
         });
     }
 
-    handleSubmitButton = event => {
+    addItem = event => {
         event.preventDefault();
         let item = {
             type: this.state.type,
@@ -74,30 +74,26 @@ class Handoff extends Component {
 
     editItem(event, edit){
         event.preventDefault();
+        //Get values of selected ticket
+        let modify = this.state.items[this.state.modify];
+        //Make copy of the state.items array
+        let tempArray = [...this.state.items];
+        //Remove the index of the selected ticket to edit/remove
+        tempArray.splice(this.state.modify, 1);
+        //Update the items and modify states to update the ticket list and set the Edit ticket dropdown
         this.setState({
-            type: "events",
-            title: "Test Title", 
-            TID: "", 
-            body: "Testing this stufff"
+            items: tempArray,
+            modify: ""
         })
-        return;
-        console.log(this.state.items)
-        let tempItems = [...this.state.items];
-        console.log(tempItems);
-        let removed = tempItems.splice(this.state.modify,1);
-        console.log(removed);
-        this.setState({
-            type: removed.type,
-            title: removed.title,
-            TID: removed.TID,
-            body: removed.body,
-        })
-        console.log(this.state)
-
-            // this.setState({
-            //     items: tempItems
-            // })
-
+        //If edit was selected, change the states below to update the appropriate fields.
+        if(edit){
+            this.setState({
+                type: modify.type,
+                title: modify.title,
+                TID: modify.TID,
+                body: modify.body,
+            })
+        }
     }
 
     render() {
@@ -201,7 +197,7 @@ class Handoff extends Component {
                             <Row>
                                 <Col lg={4}/>
                                 <Col>
-                                <Button variant="primary" type="submit" onClick={this.handleSubmitButton}>Add Item</Button>
+                                <Button variant="primary" type="submit" onClick={this.addItem}>Add Item</Button>
                                 </Col>
                                 <Col lg={4}/>
                             </Row>
@@ -227,7 +223,7 @@ class Handoff extends Component {
                                     <Button type="submit" onClick={(event)=> this.editItem(event, true)}>Edit Item</Button>
                                 </Col>
                                 <Col>
-                                    <Button type="submit" onClick={(event) => this.editItem(event,false)}>Remove Item</Button>
+                                    <Button type="submit" onClick={(event) => this.editItem(event, false)}>Remove Item</Button>
                                 </Col>
                             </Row>
                             </Form>

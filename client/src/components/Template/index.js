@@ -1,10 +1,10 @@
 import React from "react";
-
+import Button from "react-bootstrap/Button";
 
 function writeInfo(item, i) {
     return (
         <div key={i}>
-            <p><strong>{item.title} {item.TID ? " - TID: "+item.TID : ""}</strong></p>
+            <p><strong>{item.title} {item.TID ? " - TID: " + item.TID : ""}</strong></p>
             <ul>
                 {item.body.split("\r\n").map((lineItem, i) => {
                     return (<li key={i}>{lineItem}</li>)
@@ -14,7 +14,23 @@ function writeInfo(item, i) {
     )
 }
 
+function createEmail() {
+    console.log("Blah")
+    let div = document.querySelector("#email")
+    div.setAttribute("contenteditable", true)
+    div.setAttribute("style", "color:black;background-color:white")
+    div.focus();
+    document.execCommand("SelectAll")
+    document.execCommand("copy");
+    div.blur();
+    div.setAttribute("contenteditable", false)
+    div.setAttribute("style", "color: rgb(187, 187, 187);background-color:black")
+    window.open("mailto://", "_blank");
+}
+
 function Template(props) {
+
+
     let date = new Date();
 
     let announce = [];
@@ -39,22 +55,26 @@ function Template(props) {
         notes = props.items.filter(item => item.type === "notes");
     }
 
-    return (<div>
-        <div><h5>Date: {date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h5></div>
-        <div><h5>Shift: {props.shift}</h5> </div>
-        <div><h5>Data Center: {props.dc}</h5> </div>
-        <div><h5>Local Ops Techs on Shift: {props.names}</h5> </div>
-        <br /><br />
-        <div><h5>Announcements</h5>{announce ? announce.map((item, i) => writeInfo(item, i)) : ""}</div>
-        <div><h5>Events</h5>{events ? events.map((item, i) => writeInfo(item, i)) : ""}</div>
-        <div><h5>Scheduled Changes/Maintenance</h5>{maint ? maint.map((item, i) => writeInfo(item, i)) : ""}</div>
-        <div><h5>Known Issues</h5>{issues ? issues.map((item, i) => writeInfo(item, i)) : ""}</div>
-        <div><h5>Tape Rotations</h5>{tapes ? tapes.map((item, i) => writeInfo(item, i)) : ""}</div>
-        <div><h5>Backups</h5>{backup ? backup.map((item, i) => writeInfo(item, i)) : ""}</div>
-        <div><h5>Patching</h5>{patch ? patch.map((item, i) => writeInfo(item, i)) : ""}</div>
-        <div><h5>All Other Tickets Worked</h5>{other ? other.map((item, i) => writeInfo(item, i)) : ""}</div>
-        <div><h5>Notes</h5>{notes ? notes.map((item, i) => writeInfo(item, i)) : ""}</div>
-    </div>
+    return (
+        <>
+            <Button variant='success' onClick={createEmail}>Send Report</Button>
+            <div id='email'>
+                <div><h5>Date: {date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h5></div>
+                <div><h5>Shift: {props.shift}</h5> </div>
+                <div><h5>Data Center: {props.dc}</h5> </div>
+                <div><h5>Local Ops Techs on Shift: {props.names}</h5> </div>
+                <br /><br />
+                <div><h5>Announcements</h5>{announce ? announce.map((item, i) => writeInfo(item, i)) : ""}</div>
+                <div><h5>Events</h5>{events ? events.map((item, i) => writeInfo(item, i)) : ""}</div>
+                <div><h5>Scheduled Changes/Maintenance</h5>{maint ? maint.map((item, i) => writeInfo(item, i)) : ""}</div>
+                <div><h5>Known Issues</h5>{issues ? issues.map((item, i) => writeInfo(item, i)) : ""}</div>
+                <div><h5>Tape Rotations</h5>{tapes ? tapes.map((item, i) => writeInfo(item, i)) : ""}</div>
+                <div><h5>Backups</h5>{backup ? backup.map((item, i) => writeInfo(item, i)) : ""}</div>
+                <div><h5>Patching</h5>{patch ? patch.map((item, i) => writeInfo(item, i)) : ""}</div>
+                <div><h5>All Other Tickets Worked</h5>{other ? other.map((item, i) => writeInfo(item, i)) : ""}</div>
+                <div><h5>Notes</h5>{notes ? notes.map((item, i) => writeInfo(item, i)) : ""}</div>
+            </div>
+        </>
     );
 }
 

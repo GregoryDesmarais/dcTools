@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "./index.css";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import API from "../../utils/API";
@@ -75,15 +73,6 @@ class Main extends Component {
     render() {
         return (
             <Container>
-                <Row>
-                    <Col>
-                        <Jumbotron>
-                            <h1 className="text-center">
-                                Add/Remove Users
-                            </h1>
-                        </Jumbotron>
-                    </Col>
-                </Row>
                 <Form>
                     <Form.Row>
                         <Col>

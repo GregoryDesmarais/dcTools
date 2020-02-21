@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Template from "../../components/Template";
 
 
@@ -89,6 +88,7 @@ class Handoff extends Component {
                 this.setState({
                     items: []
                 })
+                return;
             }
             else{
                 return;
@@ -118,11 +118,6 @@ class Handoff extends Component {
 
     render() {
         return (<>
-            <Container>
-                <Jumbotron>
-                    <Col className="text-center"><h1>Shift Handoff Portal</h1></Col>
-                </Jumbotron>
-            </Container>
             <Container>
                 <Row>
                     <Col>
@@ -199,9 +194,9 @@ class Handoff extends Component {
                                     <Form.Control name="dcTitle" onChange={this.handleInputChange} value={this.state.title}></Form.Control>
                                 </Form.Group>
                                 </Col>
-                                <Col>
-                                <Form.Group controlId="TID" className={["tapes", "backup", "patch", "other"].includes(this.state.type) ? "" : "hide"}>
-                                    <Form.Label>TID (If Applicable)</Form.Label>
+                                <Col className={["tapes", "backup", "patch", "other"].includes(this.state.type) ? "" : "hide"}>
+                                <Form.Group controlId="TID">
+                                    <Form.Label>TID</Form.Label>
                                     <Form.Control 
                                         name="dcTID" 
                                         onChange={this.handleInputChange} 
@@ -232,7 +227,7 @@ class Handoff extends Component {
                                     <Form.Group controlId="modify">
                                         <Form.Label>Edit/Remove Items</Form.Label>
                                         <Form.Control as="select" onChange={this.handleInputChange}>
-                                            <option value="">Select Ticket</option>
+                                            <option value="">Select Item</option>
                                             {this.state.items.map((item, i) => {
                                                 return(
                                                     <option key={i} value={i}>{item.type} - {item.title}</option>

@@ -15,7 +15,6 @@ function writeInfo(item, i) {
 }
 
 function createEmail() {
-    console.log("Blah")
     let div = document.querySelector("#email")
     div.setAttribute("contenteditable", true)
     div.setAttribute("style", "color:black;background-color:white")

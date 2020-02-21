@@ -21,7 +21,7 @@ function createEmail() {
     div.focus();
     document.execCommand("SelectAll")
     document.execCommand("copy");
-    div.blur();
+    document.getSelection().removeAllRanges();
     div.setAttribute("contenteditable", false)
     div.setAttribute("style", "color: rgb(187, 187, 187);background-color:black")
     window.open("mailto://", "_blank");

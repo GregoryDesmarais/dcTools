@@ -175,14 +175,18 @@ class Handoff extends Component {
                             <Row>
                                 <Col>
                                 <Form.Group controlId="title">
-                                    <Form.Label>Title/Customer</Form.Label>
+                                    <Form.Label>{["tapes", "backups", "patching", "other"].includes(this.state.type) ? "Customer" : "Title"}</Form.Label>
                                     <Form.Control name="dcTitle" onChange={this.handleInputChange} value={this.state.title}></Form.Control>
                                 </Form.Group>
                                 </Col>
                                 <Col>
-                                <Form.Group controlId="TID">
+                                <Form.Group controlId="TID" className={["tapes", "backup", "patch", "other"].includes(this.state.type) ? "" : "hide"}>
                                     <Form.Label>TID (If Applicable)</Form.Label>
-                                    <Form.Control name="dcTID" onChange={this.handleInputChange} value={this.state.TID}></Form.Control>
+                                    <Form.Control 
+                                        name="dcTID" 
+                                        onChange={this.handleInputChange} 
+                                        value={this.state.TID}
+                                    />
                                 </Form.Group>
                                 </Col>
                             </Row>

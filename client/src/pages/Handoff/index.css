@@ -2,3 +2,7 @@ form {
     border: white 1px dashed;
     padding: 1em
 }
+
+.hide {
+    display: none;
+}

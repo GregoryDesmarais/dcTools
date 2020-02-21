@@ -25,8 +25,8 @@ class Handoff extends Component {
         modify: "",
     }
 
+    //On load, states are set to localStorage if there are values saved.
     componentDidMount = () => {
-        
         this.setState({
             names: localStorage.names || "",
             shift: localStorage.shift || "",
@@ -74,6 +74,19 @@ class Handoff extends Component {
 
     editItem(event, edit){
         event.preventDefault();
+        if(edit === "all")
+        {
+            let verify = window.confirm("Are you sure you want to clear all tickets?")
+            if(verify)
+            {
+                this.setState({
+                    items: []
+                })
+            }
+            else{
+                return;
+            }
+        }
         //Get values of selected ticket
         let modify = this.state.items[this.state.modify];
         //Make copy of the state.items array
@@ -86,7 +99,7 @@ class Handoff extends Component {
             modify: ""
         })
         //If edit was selected, change the states below to update the appropriate fields.
-        if(edit){
+        if(edit === "edit"){
             this.setState({
                 type: modify.type,
                 title: modify.title,
@@ -200,7 +213,7 @@ class Handoff extends Component {
                             </Row>
                             <Row>
                                 <Col lg={4}/>
-                                <Col>
+                                <Col className="text-center">
                                 <Button variant="primary" type="submit" onClick={this.addItem}>Add Item</Button>
                                 </Col>
                                 <Col lg={4}/>
@@ -215,7 +228,7 @@ class Handoff extends Component {
                                             <option value="">Select Ticket</option>
                                             {this.state.items.map((item, i) => {
                                                 return(
-                                                    <option key={i} value={i}>{item.title}</option>
+                                                    <option key={i} value={i}>{item.type} - {item.title}</option>
                                                 )
                                             })}
                                         </Form.Control>
@@ -224,10 +237,13 @@ class Handoff extends Component {
                             </Row>
                             <Row className="text-center">
                                 <Col>
-                                    <Button type="submit" onClick={(event)=> this.editItem(event, true)}>Edit Item</Button>
+                                    <Button type="submit" onClick={(event)=> this.editItem(event, "edit")}>Edit Item</Button>
                                 </Col>
                                 <Col>
-                                    <Button type="submit" onClick={(event) => this.editItem(event, false)}>Remove Item</Button>
+                                    <Button type="submit" onClick={(event) => this.editItem(event, "remove")}>Remove Item</Button>
+                                </Col>
+                                <Col>
+                                    <Button type="submit" variant="danger" onClick={(event) => this.editItem(event, "all")}>Remove All</Button>
                                 </Col>
                             </Row>
                             </Form>

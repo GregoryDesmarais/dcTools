@@ -120,7 +120,7 @@ class Handoff extends Component {
         return (<>
             <Container>
                 <Row>
-                    <Col>
+                    <Col lg={6} className="pb-6">
                         <Row>
                             <Col lg={6}>
                                 <InputGroup>
@@ -250,7 +250,7 @@ class Handoff extends Component {
                             </Row>
                             </Form>
                     </Col>
-                    <Col>
+                    <Col lg={6}>
                         <Template
                             names={this.state.names}
                             shift={this.state.shift}

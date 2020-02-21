@@ -6,3 +6,7 @@
 .hide {
     display: none;
 }
+
+.pb-6 {
+    padding-bottom: 6em!important;
+}

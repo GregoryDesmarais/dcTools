@@ -6,13 +6,15 @@ import Handoff from "./pages/Handoff"
 import Users from "./pages/Users"
 import Amber from "./pages/Amber"
 import Cardboard from "./pages/Cardboard"
+import { createBrowserHistory } from "history";
 import "./App.css"
 
 function App() {
+  let path = createBrowserHistory()
   return (
     <Router>
       <div>
-        <NavBar />
+        <NavBar path={path.location.pathname} />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/handoff" component={Handoff} />

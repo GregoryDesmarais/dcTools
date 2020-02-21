@@ -35,6 +35,7 @@ class Handoff extends Component {
         })
     }
 
+    //Save state data to LocalStorage whenever state changes
     componentDidUpdate = (prevProps, prevStates) => {
         this.saveData()
     }
@@ -46,6 +47,8 @@ class Handoff extends Component {
         });
     }
 
+
+    //Save item to state.  Update fields accordingly.
     addItem = event => {
         event.preventDefault();
         let item = {
@@ -72,8 +75,12 @@ class Handoff extends Component {
         localStorage.dc = this.state.dc;
     }
 
+    //Edit selected item.  Selecting "edit" button will put the data back into the appropriate fields for updating and saving.
+    //Remove will remove one.
     editItem(event, edit){
         event.preventDefault();
+        
+        //Remove all will remove all.
         if(edit === "all")
         {
             let verify = window.confirm("Are you sure you want to clear all tickets?")
@@ -240,7 +247,7 @@ class Handoff extends Component {
                                     <Button type="submit" onClick={(event)=> this.editItem(event, "edit")}>Edit Item</Button>
                                 </Col>
                                 <Col>
-                                    <Button type="submit" onClick={(event) => this.editItem(event, "remove")}>Remove Item</Button>
+                                    <Button type="submit" variant="warning" onClick={(event) => this.editItem(event, "remove")}>Remove Item</Button>
                                 </Col>
                                 <Col>
                                     <Button type="submit" variant="danger" onClick={(event) => this.editItem(event, "all")}>Remove All</Button>

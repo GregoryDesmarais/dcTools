@@ -2,4 +2,7 @@
     .loc {
         display: none;
     }
+    #shift {
+        padding-bottom: .5em
+    }
 }

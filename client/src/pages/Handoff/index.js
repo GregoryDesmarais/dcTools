@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Template from "../../components/Template";
@@ -122,11 +121,11 @@ class Handoff extends Component {
                 <Row>
                     <Col lg={6} className="pb-6">
                         <Row>
-                            <Col lg={6}>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Shift</InputGroup.Text>
-                                    </InputGroup.Prepend>
+                            <Col lg={6} className="shift">
+                                <Form.Group>
+                                    <Form.Label>
+                                        Shift
+                                    </Form.Label>
                                     <FormControl
                                         id="shift"
                                         onChange={this.handleInputChange}
@@ -134,13 +133,13 @@ class Handoff extends Component {
                                         aria-label="Shift"
                                         value={this.state.shift}
                                     />
-                                </InputGroup>
+                                </Form.Group>
                             </Col>
                             <Col lg={6}>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Data Center</InputGroup.Text>
-                                    </InputGroup.Prepend>
+                                <Form.Group>
+                                    <Form.Label>
+                                        Data Center
+                                    </Form.Label>
                                     <FormControl
                                         id="dc"
                                         onChange={this.handleInputChange}
@@ -148,15 +147,15 @@ class Handoff extends Component {
                                         aria-label="Enter Data Center name"
                                         value={this.state.dc}
                                     />
-                                </InputGroup>
+                                </Form.Group>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Tech(s)</InputGroup.Text>
-                                    </InputGroup.Prepend>
+                                <Form.Group>
+                                    <Form.Label>
+                                        Tech(s)
+                                    </Form.Label>
                                     <FormControl
                                         id="names"
                                         onChange={this.handleInputChange}
@@ -164,7 +163,7 @@ class Handoff extends Component {
                                         aria-label="Tech(s) on Site"
                                         value={this.state.names}
                                     />
-                                </InputGroup>
+                                </Form.Group>
                             </Col>
                         </Row>
                         <br/><br/>

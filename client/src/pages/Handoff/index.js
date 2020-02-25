@@ -4,10 +4,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Template from "../../components/Template";
 
 
@@ -89,6 +87,7 @@ class Handoff extends Component {
                 this.setState({
                     items: []
                 })
+                return;
             }
             else{
                 return;
@@ -119,19 +118,14 @@ class Handoff extends Component {
     render() {
         return (<>
             <Container>
-                <Jumbotron>
-                    <Col className="text-center"><h1>Shift Handoff Portal</h1></Col>
-                </Jumbotron>
-            </Container>
-            <Container>
                 <Row>
-                    <Col>
+                    <Col lg={6} className="pb-6">
                         <Row>
-                            <Col lg={6}>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Shift</InputGroup.Text>
-                                    </InputGroup.Prepend>
+                            <Col lg={6} className="shift">
+                                <Form.Group>
+                                    <Form.Label>
+                                        Shift
+                                    </Form.Label>
                                     <FormControl
                                         id="shift"
                                         onChange={this.handleInputChange}
@@ -139,13 +133,13 @@ class Handoff extends Component {
                                         aria-label="Shift"
                                         value={this.state.shift}
                                     />
-                                </InputGroup>
+                                </Form.Group>
                             </Col>
                             <Col lg={6}>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Data Center</InputGroup.Text>
-                                    </InputGroup.Prepend>
+                                <Form.Group>
+                                    <Form.Label>
+                                        Data Center
+                                    </Form.Label>
                                     <FormControl
                                         id="dc"
                                         onChange={this.handleInputChange}
@@ -153,15 +147,15 @@ class Handoff extends Component {
                                         aria-label="Enter Data Center name"
                                         value={this.state.dc}
                                     />
-                                </InputGroup>
+                                </Form.Group>
                             </Col>
                         </Row>
                         <Row>
                             <Col>
-                                <InputGroup>
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>Tech(s)</InputGroup.Text>
-                                    </InputGroup.Prepend>
+                                <Form.Group>
+                                    <Form.Label>
+                                        Tech(s)
+                                    </Form.Label>
                                     <FormControl
                                         id="names"
                                         onChange={this.handleInputChange}
@@ -169,7 +163,7 @@ class Handoff extends Component {
                                         aria-label="Tech(s) on Site"
                                         value={this.state.names}
                                     />
-                                </InputGroup>
+                                </Form.Group>
                             </Col>
                         </Row>
                         <br/><br/>
@@ -199,9 +193,9 @@ class Handoff extends Component {
                                     <Form.Control name="dcTitle" onChange={this.handleInputChange} value={this.state.title}></Form.Control>
                                 </Form.Group>
                                 </Col>
-                                <Col>
-                                <Form.Group controlId="TID" className={["tapes", "backup", "patch", "other"].includes(this.state.type) ? "" : "hide"}>
-                                    <Form.Label>TID (If Applicable)</Form.Label>
+                                <Col className={["tapes", "backup", "patch", "other"].includes(this.state.type) ? "" : "hide"}>
+                                <Form.Group controlId="TID">
+                                    <Form.Label>TID</Form.Label>
                                     <Form.Control 
                                         name="dcTID" 
                                         onChange={this.handleInputChange} 
@@ -232,7 +226,7 @@ class Handoff extends Component {
                                     <Form.Group controlId="modify">
                                         <Form.Label>Edit/Remove Items</Form.Label>
                                         <Form.Control as="select" onChange={this.handleInputChange}>
-                                            <option value="">Select Ticket</option>
+                                            <option value="">Select Item</option>
                                             {this.state.items.map((item, i) => {
                                                 return(
                                                     <option key={i} value={i}>{item.type} - {item.title}</option>
@@ -255,7 +249,7 @@ class Handoff extends Component {
                             </Row>
                             </Form>
                     </Col>
-                    <Col>
+                    <Col lg={6}>
                         <Template
                             names={this.state.names}
                             shift={this.state.shift}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./index.css";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button'
 
@@ -52,71 +51,58 @@ class Main extends Component {
     render() {
         return (
             <Container>
-                <Jumbotron>
-                    <h1 className='text-center'>Amber Light Report Generator</h1>
-                </Jumbotron>
                 <Form>
                     <Form.Row>
                         <Col lg={1} />
-                        <Col lg={5}>
-                            <Form.Group controlId="user">
-                                <Form.Label>Select User</Form.Label>
-                                <Form.Control name="dcuser" onChange={this.handleInputChange} as="select" value="Choose...">
-                                    <option value="">Select User</option>
-                                    <option value="greg@test.com">Greg</option>
-                                    <option value="joe@test.com">Joe</option>
-                                </Form.Control>
-                            </Form.Group>
-                        </Col>
                         <Col lg={5}>
                             <Form.Group controlId="cab">
                                 <Form.Label>Cabinet Location</Form.Label>
                                 <Form.Control name="dccab" onChange={this.handleInputChange} placeholder="AZ-01" />
                             </Form.Group>
                         </Col>
-                        <Col lg={1} />
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="rmu">
                                 <Form.Label>RMU</Form.Label>
                                 <Form.Control name="dcrmu" onChange={this.handleInputChange} placeholder="42" />
                             </Form.Group>
                         </Col>
+                        <Col lg={1} />
+                    </Form.Row>
+                    <Form.Row>
+                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="customer">
                                 <Form.Label>Customer</Form.Label>
                                 <Form.Control name="dccustomer" onChange={this.handleInputChange} placeholder="Joe Customer" />
                             </Form.Group>
                         </Col>
-                        <Col lg={1} />
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="device">
                                 <Form.Label>Device Type</Form.Label>
                                 <Form.Control name="dcdevice" onChange={this.handleInputChange} placeholder="Dell PE 1950" />
                             </Form.Group>
                         </Col>
+                        <Col lg={1} />
+                    </Form.Row>
+                    <Form.Row>
+                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="label">
                                 <Form.Label>Device Label</Form.Label>
                                 <Form.Control name="dclabel" onChange={this.handleInputChange} placeholder="Server01" />
                             </Form.Group>
                         </Col>
-                        <Col lg={1} />
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={1} />
                         <Col lg={5}>
                             <Form.Group controlId="serial">
                                 <Form.Label>SN/Service Tag</Form.Label>
                                 <Form.Control name="dcserial" onChange={this.handleInputChange} placeholder="123456" />
                             </Form.Group>
                         </Col>
-                        <Col lg={5}>
+                        <Col lg={1} />
+                    </Form.Row>
+                    <Form.Row>
+                        <Col lg={1} />
+                        <Col>
                             <Form.Group controlId="alert">
                                 <Form.Label>Alert</Form.Label>
                                 <Form.Control name="dcalert" onChange={this.handleInputChange} placeholder="Amber Light On" />

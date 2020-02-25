@@ -1,0 +1,8 @@
+@media (min-width: 992px) {
+    .loc {
+        display: none;
+    }
+    #shift {
+        padding-bottom: .5em
+    }
+}

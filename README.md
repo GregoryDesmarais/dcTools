@@ -1,29 +1,25 @@
-# Create React Express App
+# dcTools - [Heroku](https://dctools.herokuapp.com/)
 
-## About This Boilerplate
+## Introduction
+dcTools is a collection of tools created to provide better QoL for certain tasks.  The first version was written with HTML, CSS, JavaScript/jQuery, and PHP.  This new version was created using the MERN stack to practice and improve my skills.
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Technologies Used
+- NodeJS
+- ReactJS
+  - react-bootstrap
+  - react-router-dom
+- axios
+- bcrypt
+- dotenv
+- mongoose
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+<!-- 
+## Images
+### Home
+![Home Page](/imgs/home.png)
+![Shift Handoff](/imgs/home.png)
+![Amber Lights](/imgs/home.png)
+![Cardboard Tool](/imgs/home.png)
 
-## Starting the app locally
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
-
-```
-npm install
-```
-
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+![site image](/readme_files/site.png) -->

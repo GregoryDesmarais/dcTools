@@ -24,5 +24,12 @@ export default {
                 if (err) return err;
                 return res;
             })
+    },
+    addHandoff: (data) => {
+        return axios.post("/api/handoff/add", {data})
+        .then((res, err) => {
+            if(err) return err;
+            return res;
+        })
     }
 }

@@ -1,5 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import API from "../../utils/API"
+
+let date = new Date();
 
 function writeInfo(item, i) {
     return (
@@ -13,24 +16,28 @@ function writeInfo(item, i) {
         </div>
     )
 }
-
-function createEmail() {
-    let div = document.querySelector("#email")
-    div.setAttribute("contenteditable", true)
-    div.setAttribute("style", "color:black;background-color:white")
-    div.focus();
-    document.execCommand("SelectAll")
-    document.execCommand("copy");
-    document.getSelection().removeAllRanges();
-    div.setAttribute("contenteditable", false)
-    div.setAttribute("style", "color: rgb(187, 187, 187);background-color:black")
-    window.open("mailto://", "_blank");
-}
-
 function Template(props) {
 
 
-    let date = new Date();
+    function createEmail() {
+        let div = document.querySelector("#email")
+        div.setAttribute("contenteditable", true)
+        div.setAttribute("style", "color:black;background-color:white")
+        div.focus();
+        document.execCommand("SelectAll")
+        document.execCommand("copy");
+        document.getSelection().removeAllRanges();
+        div.setAttribute("contenteditable", false)
+        div.setAttribute("style", "color: rgb(187, 187, 187);background-color:black")
+        // window.open("mailto://", "_blank");
+        API.addHandoff({
+            shift: props.shift,
+            datacenter: props.dc,
+            date: `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`,
+            body: div.innerHTML
+        })
+        .then(res => console.log(res.statusText))
+    }
 
     let announce = [];
     let events = [];

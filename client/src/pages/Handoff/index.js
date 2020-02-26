@@ -12,6 +12,7 @@ import Template from "../../components/Template";
 class Handoff extends Component {
 
     state = {
+        date: new Date(),
         names: "",
         shift: "",
         dc: "",
@@ -251,6 +252,7 @@ class Handoff extends Component {
                     </Col>
                     <Col lg={6}>
                         <Template
+                            date = {`${this.state.date.getMonth() + 1}/${this.state.date.getDate()}/${this.state.date.getFullYear()}`}
                             names={this.state.names}
                             shift={this.state.shift}
                             dc={this.state.dc}

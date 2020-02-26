@@ -1,5 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import API from "../../utils/API"
+
+let date = new Date();
 
 function writeInfo(item, i) {
     return (
@@ -13,24 +16,30 @@ function writeInfo(item, i) {
         </div>
     )
 }
-
-function createEmail() {
-    let div = document.querySelector("#email")
-    div.setAttribute("contenteditable", true)
-    div.setAttribute("style", "color:black;background-color:white")
-    div.focus();
-    document.execCommand("SelectAll")
-    document.execCommand("copy");
-    document.getSelection().removeAllRanges();
-    div.setAttribute("contenteditable", false)
-    div.setAttribute("style", "color: rgb(187, 187, 187);background-color:black")
-    window.open("mailto://", "_blank");
-}
-
 function Template(props) {
 
-
-    let date = new Date();
+    function createEmail() {
+        let div = document.querySelector("#email")
+        div.setAttribute("contenteditable", true)
+        div.setAttribute("style", "color:black;background-color:white")
+        div.focus();
+        document.execCommand("SelectAll")
+        document.execCommand("copy");
+        document.getSelection().removeAllRanges();
+        div.setAttribute("contenteditable", false)
+        div.setAttribute("style", "color: rgb(187, 187, 187);background-color:black")
+        // window.open("mailto://", "_blank");
+        let tempDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+        let body = {
+            names: props.names,
+            shift: props.shift,
+            datacenter: props.dc,
+            date: tempDate,
+            items: props.items
+        }
+        API.addHandoff(body)
+            .then(res => console.log(res.statusText))
+    }
 
     let announce = [];
     let events = [];
@@ -54,26 +63,44 @@ function Template(props) {
         notes = props.items.filter(item => item.type === "notes");
     }
 
+    function Submit() {
+        if (window.location.pathname === "/handoff") {
+            return (<Button variant='success' onClick={createEmail}>Send Report</Button>)
+        }
+        else return null
+    }
+
+    function ShowTemplate() {
+        if (props.shift !== "") {
+            return (
+                <>
+                    <Submit />
+                    <div id='email'>
+                        <div><h5>Date: {props.date || ""}</h5></div>
+                        <div><h5>Shift: {props.shift}</h5> </div>
+                        <div><h5>Data Center: {props.dc}</h5> </div>
+                        <div><h5>Local Ops Techs on Shift: {props.names}</h5> </div>
+                        <br /><br />
+                        <div><h5>Announcements</h5>{announce ? announce.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>Events</h5>{events ? events.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>Scheduled Changes/Maintenance</h5>{maint ? maint.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>Known Issues</h5>{issues ? issues.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>Tape Rotations</h5>{tapes ? tapes.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>Backups</h5>{backup ? backup.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>Patching</h5>{patch ? patch.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>All Other Tickets Worked</h5>{other ? other.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>Notes</h5>{notes ? notes.map((item, i) => writeInfo(item, i)) : ""}</div>
+                    </div>
+                </>
+
+            )
+        }
+        else
+            return null
+    }
+
     return (
-        <>
-            <Button variant='success' onClick={createEmail}>Send Report</Button>
-            <div id='email'>
-                <div><h5>Date: {date.getMonth() + 1}/{date.getDate()}/{date.getFullYear()}</h5></div>
-                <div><h5>Shift: {props.shift}</h5> </div>
-                <div><h5>Data Center: {props.dc}</h5> </div>
-                <div><h5>Local Ops Techs on Shift: {props.names}</h5> </div>
-                <br /><br />
-                <div><h5>Announcements</h5>{announce ? announce.map((item, i) => writeInfo(item, i)) : ""}</div>
-                <div><h5>Events</h5>{events ? events.map((item, i) => writeInfo(item, i)) : ""}</div>
-                <div><h5>Scheduled Changes/Maintenance</h5>{maint ? maint.map((item, i) => writeInfo(item, i)) : ""}</div>
-                <div><h5>Known Issues</h5>{issues ? issues.map((item, i) => writeInfo(item, i)) : ""}</div>
-                <div><h5>Tape Rotations</h5>{tapes ? tapes.map((item, i) => writeInfo(item, i)) : ""}</div>
-                <div><h5>Backups</h5>{backup ? backup.map((item, i) => writeInfo(item, i)) : ""}</div>
-                <div><h5>Patching</h5>{patch ? patch.map((item, i) => writeInfo(item, i)) : ""}</div>
-                <div><h5>All Other Tickets Worked</h5>{other ? other.map((item, i) => writeInfo(item, i)) : ""}</div>
-                <div><h5>Notes</h5>{notes ? notes.map((item, i) => writeInfo(item, i)) : ""}</div>
-            </div>
-        </>
+        <ShowTemplate />
     );
 }
 

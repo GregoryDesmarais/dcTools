@@ -28,9 +28,10 @@ componentDidUpdate = (a,b) => {
                     <Nav className="mr-auto">
                         {/* <Nav.Link href='/' className={this.props.path === "/" ? "active" : ""}>Home</Nav.Link> */}
                         <Nav.Link href='/handoff' className={this.props.path === "/handoff" ? "active" : ""}>Shift Handoff</Nav.Link>
+                        <Nav.Link href='/viewhandoff' className={this.props.path === "/viewhandoff" ? "active" : ""}>View Handoffs</Nav.Link>
                         <Nav.Link href='/amber' className={this.props.path === "/amber" ? "active" : ""}>Amber Lights</Nav.Link>
                         <Nav.Link href='/cardboard' className={this.props.path === "/cardboard" ? "active" : ""}>Cardboard Tool</Nav.Link>
-                        <Nav.Link href='/users' className={this.props.path === "/users" ? "active" : ""}>Users</Nav.Link>
+                        {/* <Nav.Link href='/users' className={this.props.path === "/users" ? "active" : ""}>Users</Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

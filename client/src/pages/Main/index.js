@@ -26,8 +26,8 @@ class Main extends Component {
                                 <Accordion.Toggle as={Card.Header} eventKey="0"><h5>Shift Handoff</h5></Accordion.Toggle>
                                 <Accordion.Collapse eventKey="0">
                                     <Card.Body>
-                                        <p>Allows a user to enter items into a Shift Handoff Template.</p>
-                                        <p>Upon Submitting the handoff, it will perform the following:</p>
+                                        <p>Allows a user to enter items into a Shift Handoff Template.  Once the user has entered all usual items, they can click "Show Preview" to review.</p>
+                                        <p>Once reviewed, the user can submit the handoff.  Upon submission, it will perform the following:</p>
                                         <ol>
                                             <li>Store the Handoff information into the site's database.</li>
                                             <li>Copy the Shift Handoff body to the clipboard.</li>
@@ -50,7 +50,7 @@ class Main extends Component {
                                         </ul>
                                         <p>The "Shift" and "Data Center" fields will have a selection based on the submitted Handoffs.</p>
                                         <p>Once the parameters are set (The user can leave all parameters to default to retrieve all Handoffs), Clicking "Search" will display links to the Handoffs in the "Search Results" section.</p>
-                                        <p>Clicking a link will display the selected handoff on the page (Right side, or below the search section on mobile devices.)</p>
+                                        <p>Clicking a link will display the selected handoff on the page via a Modal.</p>
                                 </Card.Body>
                                 </Accordion.Collapse>
                             </Card>

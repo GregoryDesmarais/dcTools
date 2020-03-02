@@ -20,17 +20,8 @@ function writeInfo(item, i) {
 function Template(props) {
 
     function createEmail() {
-        let div = document.querySelector("#email")
-        div.setAttribute("contenteditable", true)
-        div.setAttribute("style", "color:black;background-color:white")
-        div.focus();
-        document.execCommand("SelectAll")
-        document.execCommand("copy");
-        document.getSelection().removeAllRanges();
-        div.setAttribute("contenteditable", false)
-        div.setAttribute("style", "color: rgb(187, 187, 187);background-color:black")
-        // window.open("mailto://", "_blank");
         let tempDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+        props.createEmail(`${props.dc} - ${props.shift} Shift Handoff - ${tempDate}`);
         let body = {
             names: props.names,
             shift: props.shift,

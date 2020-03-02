@@ -9,8 +9,9 @@ function writeInfo(item, i) {
         <div key={i}>
             <p><strong>{item.title} {item.TID ? " - TID: " + item.TID : ""}</strong></p>
             <ul>
-                {item.body.split("\r\n").map((lineItem, i) => {
-                    return (<li key={i}>{lineItem}</li>)
+                {item.body.split("\n").map((lineItem, i) => {
+                    if(lineItem.length !== 0)
+                        return (<li key={i}>{lineItem}</li>)
                 })}
             </ul>
         </div>
@@ -19,17 +20,8 @@ function writeInfo(item, i) {
 function Template(props) {
 
     function createEmail() {
-        let div = document.querySelector("#email")
-        div.setAttribute("contenteditable", true)
-        div.setAttribute("style", "color:black;background-color:white")
-        div.focus();
-        document.execCommand("SelectAll")
-        document.execCommand("copy");
-        document.getSelection().removeAllRanges();
-        div.setAttribute("contenteditable", false)
-        div.setAttribute("style", "color: rgb(187, 187, 187);background-color:black")
-        // window.open("mailto://", "_blank");
         let tempDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+        props.createEmail(`${props.dc} - ${props.shift} Shift Handoff - ${tempDate}`);
         let body = {
             names: props.names,
             shift: props.shift,
@@ -41,27 +33,18 @@ function Template(props) {
             .then(res => console.log(res.statusText))
     }
 
-    let announce = [];
-    let events = [];
-    let maint = [];
-    let issues = [];
-    let tapes = [];
-    let backup = [];
-    let patch = [];
-    let other = [];
-    let notes = [];
+    let types = ["announce", "events", "issues", "tapes", "backup", "patch", "other", "notes"];
+    let items = {};
 
     if (props.items.length > 0) {
-        announce = props.items.filter(item => item.type === "announce");
-        events = props.items.filter(item => item.type === "events");
-        maint = props.items.filter(item => item.type === "maint");
-        issues = props.items.filter(item => item.type === "issues");
-        tapes = props.items.filter(item => item.type === "tapes");
-        backup = props.items.filter(item => item.type === "backup");
-        patch = props.items.filter(item => item.type === "patch");
-        other = props.items.filter(item => item.type === "other");
-        notes = props.items.filter(item => item.type === "notes");
-    }
+        //Loop through the types array.  This will sort props.items into an object for further processing.
+        types.forEach(type => {
+            //Set temp as an array containing only the filtered items.
+            let temp = props.items.filter(item => item.type === type);
+            //Set the items object at key [type] to React components created by the writeInfo function.
+            items[type] = temp.map((item, i) => writeInfo(item, i));
+    })
+}
 
     function Submit() {
         if (window.location.pathname === "/handoff") {
@@ -81,15 +64,15 @@ function Template(props) {
                         <div><h5>Data Center: {props.dc}</h5> </div>
                         <div><h5>Local Ops Techs on Shift: {props.names}</h5> </div>
                         <br /><br />
-                        <div><h5>Announcements</h5>{announce ? announce.map((item, i) => writeInfo(item, i)) : ""}</div>
-                        <div><h5>Events</h5>{events ? events.map((item, i) => writeInfo(item, i)) : ""}</div>
-                        <div><h5>Scheduled Changes/Maintenance</h5>{maint ? maint.map((item, i) => writeInfo(item, i)) : ""}</div>
-                        <div><h5>Known Issues</h5>{issues ? issues.map((item, i) => writeInfo(item, i)) : ""}</div>
-                        <div><h5>Tape Rotations</h5>{tapes ? tapes.map((item, i) => writeInfo(item, i)) : ""}</div>
-                        <div><h5>Backups</h5>{backup ? backup.map((item, i) => writeInfo(item, i)) : ""}</div>
-                        <div><h5>Patching</h5>{patch ? patch.map((item, i) => writeInfo(item, i)) : ""}</div>
-                        <div><h5>All Other Tickets Worked</h5>{other ? other.map((item, i) => writeInfo(item, i)) : ""}</div>
-                        <div><h5>Notes</h5>{notes ? notes.map((item, i) => writeInfo(item, i)) : ""}</div>
+                        <div><h5>Announcements</h5>{items.announce}</div>
+                        <div><h5>Events</h5>{items.events}</div>
+                        <div><h5>Scheduled Changes/Maintenance</h5>{items.maint}</div>
+                        <div><h5>Known Issues</h5>{items.issues}</div>
+                        <div><h5>Tape Rotations</h5>{items.tapes}</div>
+                        <div><h5>Backups</h5>{items.backup}</div>
+                        <div><h5>Patching</h5>{items.patch}</div>
+                        <div><h5>All Other Tickets Worked</h5>{items.other}</div>
+                        <div><h5>Notes</h5>{items.notes}</div>
                     </div>
                 </>
 

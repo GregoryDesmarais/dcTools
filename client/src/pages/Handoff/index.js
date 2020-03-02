@@ -252,6 +252,7 @@ class Handoff extends Component {
                     </Col>
                     <Col lg={6}>
                         <Template
+                            createEmail={this.props.createEmail}
                             date = {`${this.state.date.getMonth() + 1}/${this.state.date.getDate()}/${this.state.date.getFullYear()}`}
                             names={this.state.names}
                             shift={this.state.shift}

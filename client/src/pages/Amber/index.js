@@ -8,7 +8,6 @@ import Button from 'react-bootstrap/Button'
 class Main extends Component {
 
     state = {
-        user: "",
         cab: "",
         rmu: "",
         customer: "",
@@ -25,25 +24,18 @@ class Main extends Component {
         });
     }
 
-    handleFormSubmit = event => {
+    handleFormSubmit = (event) => {
         event.preventDefault();
-        console.log(`
-
-        Sending to ${this.state.user}:
-
-        During a routine walkthrough of the data center an amber light was noticed on a device in your cabinet:
-        
-        Cabinet: ${this.state.cab}
-        RMU: ${this.state.rmu}
-        Device: ${this.state.device}
-        Label: ${this.state.label}
-        Service Tag/SN: ${this.state.serial}
-        Alert: ${this.state.alert}
-        
-        Please let us know if we can assist you in this matter.
-
-        Thank you
-        `)
+        this.props.createEmail(`Amber Light Report - ${this.state.customer}`);
+        this.setState({
+            cab: "",
+            rmu: "",
+            customer: "",
+            device: "",
+            label: "",
+            serial: "",
+            alert: ""
+        });
     }
 
 
@@ -51,73 +43,86 @@ class Main extends Component {
     render() {
         return (
             <Container>
-                <Form>
-                    <Form.Row>
-                        <Col lg={1} />
-                        <Col lg={5}>
-                            <Form.Group controlId="cab">
-                                <Form.Label>Cabinet Location</Form.Label>
-                                <Form.Control name="dccab" onChange={this.handleInputChange} placeholder="AZ-01" />
-                            </Form.Group>
-                        </Col>
-                        <Col lg={5}>
-                            <Form.Group controlId="rmu">
-                                <Form.Label>RMU</Form.Label>
-                                <Form.Control name="dcrmu" onChange={this.handleInputChange} placeholder="42" />
-                            </Form.Group>
-                        </Col>
-                        <Col lg={1} />
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={1} />
-                        <Col lg={5}>
-                            <Form.Group controlId="customer">
-                                <Form.Label>Customer</Form.Label>
-                                <Form.Control name="dccustomer" onChange={this.handleInputChange} placeholder="Joe Customer" />
-                            </Form.Group>
-                        </Col>
-                        <Col lg={5}>
-                            <Form.Group controlId="device">
-                                <Form.Label>Device Type</Form.Label>
-                                <Form.Control name="dcdevice" onChange={this.handleInputChange} placeholder="Dell PE 1950" />
-                            </Form.Group>
-                        </Col>
-                        <Col lg={1} />
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={1} />
-                        <Col lg={5}>
-                            <Form.Group controlId="label">
-                                <Form.Label>Device Label</Form.Label>
-                                <Form.Control name="dclabel" onChange={this.handleInputChange} placeholder="Server01" />
-                            </Form.Group>
-                        </Col>
-                        <Col lg={5}>
-                            <Form.Group controlId="serial">
-                                <Form.Label>SN/Service Tag</Form.Label>
-                                <Form.Control name="dcserial" onChange={this.handleInputChange} placeholder="123456" />
-                            </Form.Group>
-                        </Col>
-                        <Col lg={1} />
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={1} />
-                        <Col>
-                            <Form.Group controlId="alert">
-                                <Form.Label>Alert</Form.Label>
-                                <Form.Control name="dcalert" onChange={this.handleInputChange} placeholder="Amber Light On" />
-                            </Form.Group>
-                        </Col>
-                        <Col lg={1} />
-                    </Form.Row>
-                    <Form.Row>
-                        <Col lg={4} />
-                        <Col lg={4} className="text-center">
-                            <Button variant="primary" type="submit" onClick={this.handleFormSubmit}>Submit</Button>
-                        </Col>
-                        <Col lg={4} />
-                    </Form.Row>
+                <Form onSubmit={this.handleFormSubmit}>
+                <Form.Row>
+                    <Col lg={1} />
+                    <Col lg={5}>
+                        <Form.Group controlId="cab">
+                            <Form.Label>Cabinet Location</Form.Label>
+                            <Form.Control name="dccab" onChange={this.handleInputChange} required placeholder="AZ-01" value={this.state.cab}/>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={5}>
+                        <Form.Group controlId="rmu">
+                            <Form.Label>RMU</Form.Label>
+                            <Form.Control name="dcrmu" onChange={this.handleInputChange} required placeholder="42" value={this.state.rmu}/>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={1} />
+                </Form.Row>
+                <Form.Row>
+                    <Col lg={1} />
+                    <Col lg={5}>
+                        <Form.Group controlId="customer">
+                            <Form.Label>Customer</Form.Label>
+                            <Form.Control name="dccustomer" onChange={this.handleInputChange} required placeholder="Joe Customer" value={this.state.customer}/>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={5}>
+                        <Form.Group controlId="device">
+                            <Form.Label>Device Type</Form.Label>
+                            <Form.Control name="dcdevice" onChange={this.handleInputChange} required placeholder="Dell PE 1950" value={this.state.device}/>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={1} />
+                </Form.Row>
+                <Form.Row>
+                    <Col lg={1} />
+                    <Col lg={5}>
+                        <Form.Group controlId="label">
+                            <Form.Label>Device Label</Form.Label>
+                            <Form.Control name="dclabel" onChange={this.handleInputChange} required placeholder="Server01" value={this.state.label}/>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={5}>
+                        <Form.Group controlId="serial">
+                            <Form.Label>SN/Service Tag</Form.Label>
+                            <Form.Control name="dcserial" onChange={this.handleInputChange} required placeholder="123456" value={this.state.serial}/>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={1} />
+                </Form.Row>
+                <Form.Row>
+                    <Col lg={1} />
+                    <Col>
+                        <Form.Group controlId="alert">
+                            <Form.Label>Alert</Form.Label>
+                            <Form.Control name="dcalert" onChange={this.handleInputChange} required placeholder="Amber Light On" value={this.state.alert}/>
+                        </Form.Group>
+                    </Col>
+                    <Col lg={1} />
+                </Form.Row>
+                <Form.Row>
+                    <Col lg={4} />
+                    <Col lg={4} className="text-center">
+                        <Button variant="primary" type="submit">Submit</Button>
+                    </Col>
+                    <Col lg={4} />
+                </Form.Row>
                 </Form>
+                <div style={{display: "none"}} id="email">
+                    <div>During a routine walkthrough of the data center an amber light was noticed on a device in your cabinet:</div>
+                    <br/>
+                    <div><strong>Cabinet: </strong> {this.state.cab}</div>
+                    <div><strong>RMU: </strong> {this.state.rmu}</div>
+                    <div><strong>Device: </strong> {this.state.device}</div>
+                    <div><strong>Label: </strong> {this.state.label}</div>
+                    <div><strong>Service Tag/SN: </strong> {this.state.serial}</div>
+                    <div><strong>Alert: </strong> {this.state.alert}</div>
+                    <br/><br/>
+                    <div>Please let us know if we can assist you in this matter.</div>
+                    <div>Thank you</div>
+                </div>
             </Container>
         );
     }

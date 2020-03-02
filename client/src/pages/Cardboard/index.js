@@ -9,7 +9,6 @@ import Button from 'react-bootstrap/Button'
 class Cardboard extends Component {
 
     state = {
-        user: "",
         dc: "",
         cab: "",
         customer: "",
@@ -25,36 +24,31 @@ class Cardboard extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(`
-
-        Sending to ${this.state.user}:
-
-        During a routine walk through of our ${this.state.dc} Data Center, combustible materials were found within your environment.
-	    At this time, we kindly request that you remove all cardboard, paper, and like materials from your cabinet/cage immediately to follow our standard best practices for our Data Center.
-        Location of combustible material: ${this.state.cab}
-        Item found: ${this.state.items}
-        Please feel free to respond within this ticket or contact us directly regarding this request:
-        Thank you, 
-        `);
+        this.props.createEmail(`Flammable Items Report - ${this.state.customer}`);
+        this.setState({
+            dc: "",
+            cab: "",
+            customer: "",
+            items: ""
+        })
     }
 
 
     render() {
         return (
             <Container>
-                <Form autoComplete="off">
                     <Form.Row>
                         <Col lg={1}/>
                         <Col lg={5}>
                         <Form.Group controlId="cab">
                                 <Form.Label>Cabinet Location</Form.Label>
-                                <Form.Control name='dcCab' onChange={this.handleInputChange} placeholder="AZ-01" />
+                                <Form.Control name='dcCab' onChange={this.handleInputChange} required value={this.state.cab} placeholder="AZ-01" />
                             </Form.Group>
                         </Col>
                         <Col lg={5}>
                         <Form.Group controlId="customer">
                                 <Form.Label>Customer</Form.Label>
-                                <Form.Control name='dcCust' onChange={this.handleInputChange} placeholder="Joe Customer" />
+                                <Form.Control name='dcCust' onChange={this.handleInputChange} required value={this.state.customer} placeholder="Joe Customer" />
                             </Form.Group>
                         </Col>
                         <Col lg={1}/>
@@ -64,13 +58,13 @@ class Cardboard extends Component {
                         <Col lg={5}>
                         <Form.Group controlId="dc">
                                 <Form.Label>Data Center</Form.Label>
-                                <Form.Control name='dcLoc' onChange={this.handleInputChange} placeholder="CLT" />
+                                <Form.Control name='dcLoc' onChange={this.handleInputChange} required value={this.state.dc} placeholder="CLT" />
                             </Form.Group>
                         </Col>
                         <Col lg={5}>
                         <Form.Group controlId="items">
                                 <Form.Label>Items</Form.Label>
-                                <Form.Control name='dcItems' onChange={this.handleInputChange} placeholder="Small Cardboard Box" />
+                                <Form.Control name='dcItems' onChange={this.handleInputChange} required value={this.state.items} placeholder="Small Cardboard Box" />
                             </Form.Group>
                         </Col>
                         <Col lg={1}/>
@@ -88,7 +82,17 @@ class Cardboard extends Component {
                         </Col>
                         <Col lg={4} />
                     </Form.Row>
-                </Form>
+                    <div style={{display: "none"}} id='email'>
+                        <p>During a routine walk through of our {this.state.dc} Data Center, combustible materials were found within your environment.</p>
+                        <p>At this time, we kindly request that you remove all cardboard, paper, and like materials from your cabinet/cage immediately to follow our standard best practices for our Data Center.</p>
+                        <br/>
+                        <div><strong>Location of combustible material:</strong> {this.state.cab}</div>
+                        <br/>
+                        <div><strong>Item(s) found:</strong> {this.state.items}</div>
+                        <br/><br/>
+                        <p>Please feel free to respond within this ticket or contact us directly regarding this request.</p>
+                        <p>Thank you</p>
+                    </div>
             </Container>
         );
     }

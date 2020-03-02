@@ -27,7 +27,7 @@ class ViewHandoff extends Component {
             items: ""
         }
     }
-    
+
 
     getData = () => {
 
@@ -71,7 +71,7 @@ class ViewHandoff extends Component {
             });
     }
     showPreview = (id) => {
-        let data = this.state.data.filter(item => {return item._id === id})
+        let data = this.state.data.filter(item => { return item._id === id })
         this.setState({
             preview: {
                 date: data[0].date,
@@ -127,12 +127,17 @@ class ViewHandoff extends Component {
                                 Search Results
                                 {this.state.data.map(item => {
                                     return (
-                                        <Row key={item._id}>
+                                        <Row
+                                            key={item._id}
+                                            style={{ padding: "0" }}
+                                        >
                                             <Col>
-                                                {item.date} - {item.datacenter} - {item.shift} Shift
-                                            </Col>
-                                            <Col>
-                                                <Button onClick={() => this.showPreview(item._id)}>Preview</Button>
+                                                <Button
+                                                    variant="link"
+                                                    onClick={() => this.showPreview(item._id)}
+                                                >
+                                                    {item.date} - {item.datacenter} - {item.shift} Shift
+                                            </Button>
                                             </Col>
                                         </Row>
                                     )
@@ -141,7 +146,7 @@ class ViewHandoff extends Component {
                         </Row>
                     </Col>
                     <Col lg={6}>
-                    <Template
+                        <Template
                             date={this.state.preview.date}
                             names={this.state.preview.names}
                             shift={this.state.preview.shift}

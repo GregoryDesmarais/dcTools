@@ -42,7 +42,6 @@ class ViewHandoff extends Component {
             body.date = date;
         API.getHandoffs(body)
             .then(res => {
-                console.log(res.data);
                 this.setState({
                     data: res.data
                 });
@@ -125,7 +124,7 @@ class ViewHandoff extends Component {
                         </Row>
                         <Row>
                             <Col>
-                                Handoff Results
+                                Search Results
                                 {this.state.data.map(item => {
                                     return (
                                         <Row key={item._id}>

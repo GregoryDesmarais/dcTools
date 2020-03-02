@@ -278,7 +278,7 @@ class Handoff extends Component {
                                     <Button type="submit" disabled={!this.state.modify} variant="warning" onClick={(event) => this.editItem(event, "remove")}>Remove Item</Button>
                                 </Col>
                                 <Col>
-                                    <Button type="submit" disabled={!this.state.modify} variant="danger" onClick={(event) => this.editItem(event, "all")}>Remove All</Button>
+                                    <Button type="submit" variant="danger" onClick={(event) => this.editItem(event, "all")}>Remove All</Button>
                                 </Col>
                             </Row>
                             <Row className="text-center">

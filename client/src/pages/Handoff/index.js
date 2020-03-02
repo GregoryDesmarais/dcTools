@@ -7,21 +7,24 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Template from "../../components/Template";
+import Modal from "react-bootstrap/Modal"
 
 
 class Handoff extends Component {
 
     state = {
+        show: false,
         date: new Date(),
         names: "",
         shift: "",
         dc: "",
         items: [],
-        type: "announce",
+        type: "",
         title: "",
         TID: "",
         body: "",
         modify: "",
+        add: true
     }
 
     //On load, states are set to localStorage if there are values saved.
@@ -42,8 +45,9 @@ class Handoff extends Component {
     handleInputChange = event => {
         const { id, value } = event.target;
         this.setState({
-            [id]: value
+            [id]: value,
         });
+
     }
 
 
@@ -53,21 +57,21 @@ class Handoff extends Component {
         let item = {
             type: this.state.type,
             title: this.state.title,
-            TID: this.state.TID, 
+            TID: this.state.TID,
             body: this.state.body
         };
         let items = this.state.items;
         items.push(item);
         this.setState({
             items: items,
-            type: "announce",
+            type: "",
             title: "",
             TID: "",
             body: ""
         })
     }
 
-    saveData(){
+    saveData() {
         localStorage.items = JSON.stringify(this.state.items);
         localStorage.names = this.state.names;
         localStorage.shift = this.state.shift;
@@ -76,21 +80,18 @@ class Handoff extends Component {
 
     //Edit selected item.  Selecting "edit" button will put the data back into the appropriate fields for updating and saving.
     //Remove will remove one.
-    editItem(event, edit){
+    editItem(event, edit) {
         event.preventDefault();
-        
         //Remove all will remove all.
-        if(edit === "all")
-        {
+        if (edit === "all") {
             let verify = window.confirm("Are you sure you want to clear all tickets?")
-            if(verify)
-            {
+            if (verify) {
                 this.setState({
                     items: []
                 })
                 return;
             }
-            else{
+            else {
                 return;
             }
         }
@@ -106,7 +107,7 @@ class Handoff extends Component {
             modify: ""
         })
         //If edit was selected, change the states below to update the appropriate fields.
-        if(edit === "edit"){
+        if (edit === "edit") {
             this.setState({
                 type: modify.type,
                 title: modify.title,
@@ -116,7 +117,24 @@ class Handoff extends Component {
         }
     }
 
+    checkitems = () => {
+        const { title, body, TID, type } = this.state;
+        if (type === "")
+            return false;
+        else if (["tapes", "backup", "patch", "other"].includes(type)) {
+            console.log("Ticket Selected")
+            return (title.length > 0 && body.length > 0 && TID.length > 0)
+        }
+        else {
+            return (title.length > 0 && body.length > 0)
+        }
+    }
+
+    showPreview = () => this.setState({ show: true });
+    hidePreview = () => this.setState({ show: false });
+
     render() {
+        const enable = this.checkitems()
         return (<>
             <Container>
                 <Row>
@@ -128,6 +146,7 @@ class Handoff extends Component {
                                         Shift
                                     </Form.Label>
                                     <FormControl
+                                        required
                                         id="shift"
                                         onChange={this.handleInputChange}
                                         placeholder="1st, 2nd, etc"
@@ -142,6 +161,7 @@ class Handoff extends Component {
                                         Data Center
                                     </Form.Label>
                                     <FormControl
+                                        required
                                         id="dc"
                                         onChange={this.handleInputChange}
                                         placeholder="CLT1"
@@ -158,6 +178,7 @@ class Handoff extends Component {
                                         Tech(s)
                                     </Form.Label>
                                     <FormControl
+                                        required
                                         id="names"
                                         onChange={this.handleInputChange}
                                         placeholder="Tech(s) on Site"
@@ -167,13 +188,14 @@ class Handoff extends Component {
                                 </Form.Group>
                             </Col>
                         </Row>
-                        <br/><br/>
+                        <br /><br />
                         <Form>
                             <Row>
                                 <Col>
                                     <Form.Group controlId="type">
                                         <Form.Label>Item Type</Form.Label>
-                                        <Form.Control onChange={this.handleInputChange} as="select" value={this.state.type}>
+                                        <Form.Control required onChange={this.handleInputChange} as="select" value={this.state.type}>
+                                            <option value="">Select Item Type</option>
                                             <option value="announce">Announcements</option>
                                             <option value="events">Events</option>
                                             <option value="maint">Changes/Maintenance</option>
@@ -189,38 +211,40 @@ class Handoff extends Component {
                             </Row>
                             <Row>
                                 <Col>
-                                <Form.Group controlId="title">
-                                    <Form.Label>{["tapes", "backups", "patching", "other"].includes(this.state.type) ? "Customer" : "Title"}</Form.Label>
-                                    <Form.Control name="dcTitle" onChange={this.handleInputChange} value={this.state.title}></Form.Control>
-                                </Form.Group>
+                                    <Form.Group controlId="title">
+                                        <Form.Label>{["tapes", "backup", "patch", "other"].includes(this.state.type) ? "Customer" : "Title"}</Form.Label>
+                                        <Form.Control required name="dcTitle" onChange={this.handleInputChange} value={this.state.title}></Form.Control>
+                                    </Form.Group>
                                 </Col>
                                 <Col className={["tapes", "backup", "patch", "other"].includes(this.state.type) ? "" : "hide"}>
-                                <Form.Group controlId="TID">
-                                    <Form.Label>TID</Form.Label>
-                                    <Form.Control 
-                                        name="dcTID" 
-                                        onChange={this.handleInputChange} 
-                                        value={this.state.TID}
-                                    />
-                                </Form.Group>
+                                    <Form.Group controlId="TID">
+                                        <Form.Label>TID</Form.Label>
+                                        <Form.Control
+                                            name="dcTID"
+                                            onChange={this.handleInputChange}
+                                            value={this.state.TID}
+                                        />
+                                    </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col>
-                                <Form.Group controlId="body">
-                                    <Form.Label>Notes</Form.Label>
-                                    <Form.Control name="dcbody" onChange={this.handleInputChange} as="textarea" rows="4" value={this.state.body}></Form.Control>
-                                </Form.Group>
+                                    <Form.Group controlId="body">
+                                        <Form.Label>Notes</Form.Label>
+                                        <Form.Control required name="dcbody" onChange={this.handleInputChange} as="textarea" rows="4" value={this.state.body}></Form.Control>
+                                    </Form.Group>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col lg={4}/>
+                                <Col lg={4} />
                                 <Col className="text-center">
-                                <Button variant="primary" type="submit" onClick={this.addItem}>Add Item</Button>
+                                    <Button variant="primary" type="submit" onClick={this.addItem} disabled={!enable}>Add Item</Button>
                                 </Col>
-                                <Col lg={4}/>
+                                <Col lg={4} />
                             </Row>
                         </Form>
+                    </Col>
+                    <Col lg={6}>
                         <Form>
                             <Row>
                                 <Col>
@@ -229,7 +253,7 @@ class Handoff extends Component {
                                         <Form.Control as="select" onChange={this.handleInputChange}>
                                             <option value="">Select Item</option>
                                             {this.state.items.map((item, i) => {
-                                                return(
+                                                return (
                                                     <option key={i} value={i}>{item.type} - {item.title}</option>
                                                 )
                                             })}
@@ -239,27 +263,38 @@ class Handoff extends Component {
                             </Row>
                             <Row className="text-center">
                                 <Col>
-                                    <Button type="submit" onClick={(event)=> this.editItem(event, "edit")}>Edit Item</Button>
+                                    <Button type="submit" disabled={!this.state.modify} onClick={(event) => this.editItem(event, "edit")}>Edit Item</Button>
                                 </Col>
                                 <Col>
-                                    <Button type="submit" variant="warning" onClick={(event) => this.editItem(event, "remove")}>Remove Item</Button>
+                                    <Button type="submit" disabled={!this.state.modify} variant="warning" onClick={(event) => this.editItem(event, "remove")}>Remove Item</Button>
                                 </Col>
                                 <Col>
                                     <Button type="submit" variant="danger" onClick={(event) => this.editItem(event, "all")}>Remove All</Button>
                                 </Col>
                             </Row>
-                            </Form>
+                            <Row className="text-center">
+                                <Col>
+                                    <Button onClick={this.showPreview}>Show Preview</Button>
+                                </Col>
+                            </Row>
+                        </Form>
                     </Col>
-                    <Col lg={6}>
-                        <Template
-                            createEmail={this.props.createEmail}
-                            date = {`${this.state.date.getMonth() + 1}/${this.state.date.getDate()}/${this.state.date.getFullYear()}`}
-                            names={this.state.names}
-                            shift={this.state.shift}
-                            dc={this.state.dc}
-                            items={this.state.items}
-                        />
-                    </Col>
+                    <Modal show={this.state.show} onHide={this.hidePreview}>
+                        <Modal.Header closeButton className="dark">
+                            <Modal.Title>Viewing Handoff</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body className="dark">
+                            <Template
+                                hidePreview={this.hidePreview}
+                                createEmail={this.props.createEmail}
+                                date={`${this.state.date.getMonth() + 1}/${this.state.date.getDate()}/${this.state.date.getFullYear()}`}
+                                names={this.state.names}
+                                shift={this.state.shift}
+                                dc={this.state.dc}
+                                items={this.state.items}
+                            />
+                        </Modal.Body>
+                    </Modal>
                 </Row>
             </Container >
         </>);

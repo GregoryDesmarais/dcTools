@@ -44,17 +44,8 @@ class Handoff extends Component {
 
     handleInputChange = event => {
         const { id, value } = event.target;
-        let verify = true;
-        if (["tapes", "backup", "patch", "other"].includes(this.state.type)) {
-            verify = this.state.title !== "" && this.state.body !== "" && this.state.TID !== "";
-            console.log(verify);
-        } else {
-            verify = this.state.title !== "" && this.state.body !== ""
-            console.log(verify);
-        }
         this.setState({
             [id]: value,
-            add: verify
         });
 
     }

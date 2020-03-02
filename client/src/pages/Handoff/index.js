@@ -19,11 +19,12 @@ class Handoff extends Component {
         shift: "",
         dc: "",
         items: [],
-        type: "announce",
+        type: "",
         title: "",
         TID: "",
         body: "",
         modify: "",
+        add: true
     }
 
     //On load, states are set to localStorage if there are values saved.
@@ -43,9 +44,19 @@ class Handoff extends Component {
 
     handleInputChange = event => {
         const { id, value } = event.target;
+        let verify = true;
+        if (["tapes", "backup", "patch", "other"].includes(this.state.type)) {
+            verify = this.state.title !== "" && this.state.body !== "" && this.state.TID !== "";
+            console.log(verify);
+        } else {
+            verify = this.state.title !== "" && this.state.body !== ""
+            console.log(verify);
+        }
         this.setState({
-            [id]: value
+            [id]: value,
+            add: verify
         });
+
     }
 
 
@@ -62,7 +73,7 @@ class Handoff extends Component {
         items.push(item);
         this.setState({
             items: items,
-            type: "announce",
+            type: "",
             title: "",
             TID: "",
             body: ""
@@ -115,11 +126,24 @@ class Handoff extends Component {
         }
     }
 
+    checkitems = () => {
+        const { title, body, TID, type } = this.state;
+        if (type === "")
+            return false;
+        else if (["tapes", "backup", "patch", "other"].includes(type)) {
+            console.log("Ticket Selected")
+            return (title.length > 0 && body.length > 0 && TID.length > 0)
+        }
+        else {
+            return (title.length > 0 && body.length > 0)
+        }
+    }
+
     showPreview = () => this.setState({ show: true });
     hidePreview = () => this.setState({ show: false });
 
-
     render() {
+        const enable = this.checkitems()
         return (<>
             <Container>
                 <Row>
@@ -180,6 +204,7 @@ class Handoff extends Component {
                                     <Form.Group controlId="type">
                                         <Form.Label>Item Type</Form.Label>
                                         <Form.Control required onChange={this.handleInputChange} as="select" value={this.state.type}>
+                                            <option value="">Select Item Type</option>
                                             <option value="announce">Announcements</option>
                                             <option value="events">Events</option>
                                             <option value="maint">Changes/Maintenance</option>
@@ -196,7 +221,7 @@ class Handoff extends Component {
                             <Row>
                                 <Col>
                                     <Form.Group controlId="title">
-                                        <Form.Label>{["tapes", "backups", "patching", "other"].includes(this.state.type) ? "Customer" : "Title"}</Form.Label>
+                                        <Form.Label>{["tapes", "backup", "patch", "other"].includes(this.state.type) ? "Customer" : "Title"}</Form.Label>
                                         <Form.Control required name="dcTitle" onChange={this.handleInputChange} value={this.state.title}></Form.Control>
                                     </Form.Group>
                                 </Col>
@@ -222,7 +247,7 @@ class Handoff extends Component {
                             <Row>
                                 <Col lg={4} />
                                 <Col className="text-center">
-                                    <Button variant="primary" type="submit" onClick={this.addItem}>Add Item</Button>
+                                    <Button variant="primary" type="submit" onClick={this.addItem} disabled={!enable}>Add Item</Button>
                                 </Col>
                                 <Col lg={4} />
                             </Row>

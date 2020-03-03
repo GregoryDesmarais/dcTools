@@ -59,32 +59,28 @@ function Template(props) {
     }
 
     function ShowTemplate() {
-        if (props.shift !== "") {
-            return (
-                <>
-                    <div id='email'>
-                        <div><h5>Date: {props.date || ""}</h5></div>
-                        <div><h5>Shift: {props.shift}</h5> </div>
-                        <div><h5>Data Center: {props.dc}</h5> </div>
-                        <div><h5>Local Ops Techs on Shift: {props.names}</h5> </div>
-                        <br /><br />
-                        <div><h5>Announcements</h5>{items.announce}</div>
-                        <div><h5>Events</h5>{items.events}</div>
-                        <div><h5>Scheduled Changes/Maintenance</h5>{items.maint}</div>
-                        <div><h5>Known Issues</h5>{items.issues}</div>
-                        <div><h5>Tape Rotations</h5>{items.tapes}</div>
-                        <div><h5>Backups</h5>{items.backup}</div>
-                        <div><h5>Patching</h5>{items.patch}</div>
-                        <div><h5>All Other Tickets Worked</h5>{items.other}</div>
-                        <div><h5>Notes</h5>{items.notes}</div>
-                    </div>
-                    <Submit />
-                </>
+        return (
+            <>
+                <div id='email'>
+                    <div><h5>Date: {props.date || ""}</h5></div>
+                    <div><h5>Shift: {props.shift}</h5> </div>
+                    <div><h5>Data Center: {props.dc}</h5> </div>
+                    <div><h5>Local Ops Techs on Shift: {props.names}</h5> </div>
+                    <br /><br />
+                    <div><h5>Announcements</h5>{items.announce}</div>
+                    <div><h5>Events</h5>{items.events}</div>
+                    <div><h5>Scheduled Changes/Maintenance</h5>{items.maint}</div>
+                    <div><h5>Known Issues</h5>{items.issues}</div>
+                    <div><h5>Tape Rotations</h5>{items.tapes}</div>
+                    <div><h5>Backups</h5>{items.backup}</div>
+                    <div><h5>Patching</h5>{items.patch}</div>
+                    <div><h5>All Other Tickets Worked</h5>{items.other}</div>
+                    <div><h5>Notes</h5>{items.notes}</div>
+                </div>
+                <Submit />
+            </>
 
-            )
-        }
-        else
-            return null
+        )
     }
 
     return (

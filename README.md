@@ -30,6 +30,6 @@ The user can then click "Send Report" to save their completed handoff to the dat
 ![Amber Lights](/imgs/amber.png)
 Periodically, the Data Center Technician is to check servers in the Data Center for Amber Lights, which typically indicate an active issue with the server.  The customer is then contacted via ticket if any are found.  This tool provides a simple form that accepts user input and stores it to the database.  The user can then recall the data, in template form, to be sent to the customer via their ticketing system.
 
-
+### Cardboard Report
 ![Cardboard Report](/imgs/cardboard.png)
 This tool has roughly the same functionality as the Amber Light tool.  Every so often, the Data Center is to be audited for combustible materials stored in the cabinets.  This tool provides a way to store the information for any offending cabinets, and allows the user to recall the information in template form, which can then be sent to the customer via a ticket.

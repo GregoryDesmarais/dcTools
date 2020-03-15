@@ -17,7 +17,7 @@ module.exports = {
                     res.json(err);
                 }
                 if (success) {
-                    console.log(sucess)
+                    console.log(success)
                     res.status(200).send("Handoff added successfully!");
                 }
             })

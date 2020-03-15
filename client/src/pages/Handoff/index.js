@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import Template from "../../components/Template";
+import HandoffTemplate from "../../components/HandoffTemplate";
 import Modal from "react-bootstrap/Modal"
 
 
@@ -284,7 +284,7 @@ class Handoff extends Component {
                             <Modal.Title>Viewing Handoff</Modal.Title>
                         </Modal.Header>
                         <Modal.Body className="dark">
-                            <Template
+                            <HandoffTemplate
                                 hidePreview={this.hidePreview}
                                 createEmail={this.props.createEmail}
                                 date={`${this.state.date.getMonth() + 1}/${this.state.date.getDate()}/${this.state.date.getFullYear()}`}

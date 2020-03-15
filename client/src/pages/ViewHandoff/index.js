@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from "../../utils/API"
+import API from "../../utils/HandoffAPI"
 import "./index.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-import Template from "../../components/Template"
+import HandoffTemplate from "../../components/HandoffTemplate"
 import Modal from 'react-bootstrap/Modal'
 
 
@@ -150,7 +150,7 @@ class ViewHandoff extends Component {
                             <Modal.Title>Viewing Handoff</Modal.Title>
                         </Modal.Header>
                         <Modal.Body className="dark">
-                            <Template
+                            <HandoffTemplate
                                 date={this.state.preview.date}
                                 names={this.state.preview.names}
                                 shift={this.state.preview.shift}

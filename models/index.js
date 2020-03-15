@@ -2,5 +2,6 @@
 module.exports = {
   User: require("./User"),
   Handoff: require("./Handoff"),
+  Amber: require("./Amber"),
   // ConnectionLog: require("./ConnectionLog")
 };

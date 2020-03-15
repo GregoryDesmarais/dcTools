@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal"
-import API from "../../utils/API"
+import API from "../../utils/HandoffAPI"
 
 let date = new Date();
 
@@ -13,6 +13,7 @@ function writeInfo(item, i) {
                 {item.body.split("\n").map((lineItem, i) => {
                     if (lineItem.length !== 0)
                         return (<li key={i}>{lineItem}</li>)
+                    else return null;
                 })}
             </ul>
         </div>

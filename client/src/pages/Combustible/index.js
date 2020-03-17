@@ -23,7 +23,6 @@ class Combustible extends Component {
     getReports = () => {
         API.get()
             .then(res => {
-                console.log(res.data)
                 this.setState({
                     reports: res.data
                 })

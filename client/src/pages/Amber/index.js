@@ -113,7 +113,7 @@ class Main extends Component {
                     <Col lg={6}>
                         <Row>
                             <Col>
-                                <h4 className="text-center">Add New Amber Light Alert</h4>
+                                <h4 className="text-center">Add New Alert</h4>
                             </Col>
                         </Row>
                         <Row>
@@ -130,7 +130,7 @@ class Main extends Component {
                                         <Col lg={5}>
                                             <Form.Group controlId="rmu">
                                                 <Form.Label>RMU</Form.Label>
-                                                <Form.Control name="dcrmu" onChange={this.handleInputChange} required placeholder="42" value={this.state.rmu} />
+                                                <Form.Control type='number' name="dcrmu" onChange={this.handleInputChange} required placeholder="42" value={this.state.rmu} />
                                             </Form.Group>
                                         </Col>
                                         <Col lg={1} />

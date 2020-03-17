@@ -3,6 +3,6 @@ module.exports = {
   User: require("./User"),
   Handoff: require("./Handoff"),
   Amber: require("./Amber"),
-  Cardboard: require("./Cardboard"),
+  Combustible: require("./Combustible"),
   // ConnectionLog: require("./ConnectionLog")
 };

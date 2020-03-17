@@ -12,3 +12,7 @@
 .btnRow {
     text-align: center;
 }
+
+button.close {
+    color: rgb(187, 187, 187);
+}

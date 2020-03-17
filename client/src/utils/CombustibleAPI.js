@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
 
     add: (data) => {
-        return axios.post("/api/cardboard/add", { data })
+        return axios.post("/api/combustible/add", { data })
             .then(res => res)
             .catch(err => {
                 //Axios formats the error is such a way that you are unable to access the response data object.
@@ -14,7 +14,7 @@ export default {
     },
 
     get: () => {
-        return axios.get("/api/cardboard/get")
+        return axios.get("/api/combustible/get")
             .then(res => res)
             .catch(err => {
                 //Axios formats the error is such a way that you are unable to access the response data object.
@@ -28,7 +28,7 @@ export default {
         let id = {
             _id: data
         }
-        return axios.delete("/api/cardboard/remove", { data: id }) //URL and optional config.  Passing ID as "data" property, accessed server side as "req.body"
+        return axios.delete("/api/combustible/remove", { data: id }) //URL and optional config.  Passing ID as "data" property, accessed server side as "req.body"
             .then(res => res)
             .catch(err => {
                 //Axios formats the error is such a way that you are unable to access the response data object.

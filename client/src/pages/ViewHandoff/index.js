@@ -57,6 +57,7 @@ class ViewHandoff extends Component {
 
 
     componentDidMount = () => {
+        this.getData();
         API.getShifts()
             .then(res => {
                 this.setState({
@@ -96,7 +97,7 @@ class ViewHandoff extends Component {
                     <Col lg={6}>
                         <Row>
                             <Col>
-                                <h4 className="text-center">Search By</h4>
+                                <h4 className="text-center">Filter By</h4>
                             </Col>
                         </Row>
                         <Row>
@@ -127,7 +128,7 @@ class ViewHandoff extends Component {
                                 </Form.Group>
                                 <Form.Group>
                                     <Button onClick={this.getData}>
-                                        Search
+                                        Filter
                                     </Button>
                                 </Form.Group>
                             </Col>
@@ -136,7 +137,7 @@ class ViewHandoff extends Component {
                     <Col lg={6}>
                         <Row>
                             <Col>
-                                <h4 className="text-center">Search Results</h4>
+                                <h4 className="text-center">Results</h4>
                             </Col>
                         </Row>
                         <Row>

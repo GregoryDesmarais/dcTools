@@ -182,7 +182,7 @@ class Cardboard extends Component {
                                                         </div>
                                                         <div className="text-right">
                                                             <Button variant="success" onClick={(e) => this.copy(e, "report" + i)}>Copy Report</Button>
-                                                            <Button variant="danger" onClick={() => this.remove(report._id)}>Delete Report</Button>
+                                                            <Accordion.Toggle as={Button} variant='danger' eventKey={i} onClick={() => this.remove(report._id)}>Delete Report</Accordion.Toggle>
                                                         </div>
                                                     </Card.Body>
                                                 </Accordion.Collapse>

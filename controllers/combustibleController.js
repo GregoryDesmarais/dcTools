@@ -1,4 +1,4 @@
-const Cardboard = require("../models/Cardboard");
+const Combustible = require("../models/Combustible");
 
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
     let body = req.body.data;
     let temp = new Date();
     body.date = `${temp.getMonth() + 1}/${temp.getDate()}/${temp.getFullYear()}`;
-    Cardboard.find(
+    Combustible.find(
       {
         cab: body.cab,
         rmu: body.rmu,
@@ -22,7 +22,7 @@ module.exports = {
             data: data})
         }
         else {
-          Cardboard.create(body)
+          Combustible.create(body)
             .then((success, err) => {
               if (err) {
                 // console.log(err);
@@ -30,7 +30,7 @@ module.exports = {
               }
               if (success) {
                 // console.log(success)
-                res.status(200).send("Cardboard Report added successfully!");
+                res.status(200).send("Combustible Report added successfully!");
               }
             })
         }
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   get: function (req, res) {
-    Cardboard.find().sort({ customer: "asc" })
+    Combustible.find().sort({ customer: "asc" })
       .then((success, err) => {
         if (err)
           console.log(err);
@@ -49,7 +49,7 @@ module.exports = {
 
   remove: function (req, res) {
     let body = req.body;
-    Cardboard.findOneAndDelete(body)
+    Combustible.findOneAndDelete(body)
       .then((suc, err) => {
         if (err)
           console.log(err)

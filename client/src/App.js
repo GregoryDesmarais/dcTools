@@ -6,7 +6,7 @@ import Handoff from "./pages/Handoff"
 import ViewHandoff from "./pages/ViewHandoff"
 // import Users from "./pages/Users"
 import Amber from "./pages/Amber"
-import Cardboard from "./pages/Cardboard"
+import Combustible from "./pages/Combustible"
 import { createBrowserHistory } from "history";
 import "./App.css"
 
@@ -37,7 +37,7 @@ function App() {
           {/* <Route exact path="/users" component={Users} /> */}
           <Route exact path="/viewhandoff" component={ViewHandoff} />
           <Route exact path="/amber" render={props => (<Amber createEmail={createEmail}/>)} />
-          <Route exact path="/cardboard" render={props => (<Cardboard createEmail={createEmail}/>)} />
+          <Route exact path="/combustible" render={props => (<Combustible createEmail={createEmail}/>)} />
         </Switch>
         </div>
     </Router>

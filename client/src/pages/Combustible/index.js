@@ -5,12 +5,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
-import API from "../../utils/CardboardAPI";
+import API from "../../utils/CombustibleAPI";
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 
 
-class Cardboard extends Component {
+class Combustible extends Component {
 
     state = {
         dc: "",
@@ -200,4 +200,4 @@ class Cardboard extends Component {
     }
 }
 
-export default Cardboard;
+export default Combustible;

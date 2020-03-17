@@ -3,3 +3,12 @@
     color: rgb(187, 187, 187);
     border: white solid 1px
 }
+
+.reportBtn {
+    margin: .25em 0;
+    width: 100%;
+}
+
+.btnRow {
+    text-align: center;
+}

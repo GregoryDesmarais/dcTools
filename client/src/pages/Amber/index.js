@@ -218,7 +218,7 @@ class Main extends Component {
                                                         </div>
                                                         <div className="text-right">
                                                             <Button variant="success" onClick={(e) => this.copyAlert(e, "alert" + i)}>Copy Alert</Button>
-                                                            <Button variant="danger" onClick={() => this.removeAmber(alert._id)}>Delete Alert</Button>
+                                                            <Accordion.Toggle as={Button} variant='danger' eventKey={i} onClick={() => this.removeAmber(alert._id)}>Delete Alert</Accordion.Toggle>
                                                         </div>
                                                     </Card.Body>
                                                 </Accordion.Collapse>

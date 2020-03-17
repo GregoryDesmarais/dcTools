@@ -93,57 +93,75 @@ class ViewHandoff extends Component {
         return (
             <Container>
                 <Row>
-                    <Col>
-                        <p>Search By</p>
-                        <Form.Group controlId='shift'>
-                            <Form.Label>Shift</Form.Label>
-                            <FormControl as="select" onChange={this.handleInputChange}>
-                                <option value=''>Select Shift</option>
-                                {this.state.shiftList.map((item, i) => {
-                                    return (<option key={i} value={item}>{item}</option>)
-                                })}
-                            </FormControl>
-                        </Form.Group>
-                        <Form.Group controlId='datacenter' onChange={this.handleInputChange}>
-                            <Form.Label>Data Center</Form.Label>
-                            <FormControl as="select">
-                                <option value=''>Select Data Center</option>
-                                {this.state.dcList.map((item, i) => {
-                                    return (<option key={i} value={item}>{item}</option>)
-                                })}
-                            </FormControl>
-                        </Form.Group>
-                        <Form.Group controlId='date' onChange={this.handleInputChange}>
-                            <Form.Label>Handoff Date</Form.Label>
-                            <FormControl
-                                type='date'
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <Button onClick={this.getData}>
-                                Search
+                    <Col lg={6}>
+                        <Row>
+                            <Col>
+                                <h4 className="text-center">Search By</h4>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form.Group controlId='shift'>
+                                    <Form.Label>Shift</Form.Label>
+                                    <FormControl as="select" onChange={this.handleInputChange}>
+                                        <option value=''>Select Shift</option>
+                                        {this.state.shiftList.map((item, i) => {
+                                            return (<option key={i} value={item}>{item}</option>)
+                                        })}
+                                    </FormControl>
+                                </Form.Group>
+                                <Form.Group controlId='datacenter' onChange={this.handleInputChange}>
+                                    <Form.Label>Data Center</Form.Label>
+                                    <FormControl as="select">
+                                        <option value=''>Select Data Center</option>
+                                        {this.state.dcList.map((item, i) => {
+                                            return (<option key={i} value={item}>{item}</option>)
+                                        })}
+                                    </FormControl>
+                                </Form.Group>
+                                <Form.Group controlId='date' onChange={this.handleInputChange}>
+                                    <Form.Label>Handoff Date</Form.Label>
+                                    <FormControl
+                                        type='date'
+                                    />
+                                </Form.Group>
+                                <Form.Group>
+                                    <Button onClick={this.getData}>
+                                        Search
                                     </Button>
-                        </Form.Group>
+                                </Form.Group>
+                            </Col>
+                        </Row>
                     </Col>
-                    <Col>
-                        Search Results
+                    <Col lg={6}>
+                        <Row>
+                            <Col>
+                                <h4 className="text-center">Search Results</h4>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
                                 {this.state.data.map(item => {
-                            return (
-                                <Row
-                                    key={item._id}
-                                    style={{ padding: "0" }}
-                                >
-                                    <Col>
-                                        <Button
-                                            variant="link"
-                                            onClick={() => this.showPreview(item._id)}
+                                    return (
+                                        <Row
+                                            key={item._id}
+                                            style={{ padding: "0" }}
+                                            className="btnRow"
                                         >
-                                            {item.date} - {item.datacenter} - {item.shift} Shift
+                                            <Col>
+                                                <Button
+                                                    variant="dark"
+                                                    className="reportBtn"
+                                                    onClick={() => this.showPreview(item._id)}
+                                                >
+                                                    {item.date} - {item.datacenter} - {item.shift} Shift
                                             </Button>
-                                    </Col>
-                                </Row>
-                            )
-                        })}
+                                            </Col>
+                                        </Row>
+                                    )
+                                })}
+                            </Col>
+                        </Row>
                     </Col>
                     <Modal show={this.state.show} onHide={this.hidePreview}>
                         <Modal.Header closeButton className="dark">

@@ -148,7 +148,7 @@ class Handoff extends Component {
                     <Col lg={6} className="pb-6">
                         <Row>
                             <Col>
-                                <h5 className="text-center">Shift Info</h5></Col>
+                                <h4 className="text-center">Shift Info</h4></Col>
                         </Row>
                         <Row>
                             <Col lg={6} className="shift">
@@ -201,7 +201,7 @@ class Handoff extends Component {
                         </Row>
                         <Row>
                             <Col>
-                                <h5 className='text-center'>Item Input</h5></Col>
+                                <h4 className='text-center'>Item Input</h4></Col>
                         </Row>
                         <Form>
                             <Row>
@@ -264,7 +264,7 @@ class Handoff extends Component {
                     <Col lg={6}>
                         <Row>
                             <Col>
-                                <h5 className='text-center'>Edit/Remove Items</h5>
+                                <h4 className='text-center'>Edit/Remove Items</h4>
                             </Col>
                         </Row>
                         <Form>

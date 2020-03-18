@@ -26,15 +26,43 @@ class Main extends Component {
                                 <Accordion.Toggle as={Card.Header} eventKey="0"><h5>Shift Handoff</h5></Accordion.Toggle>
                                 <Accordion.Collapse eventKey="0">
                                     <Card.Body>
-                                        <p>Allows a user to enter items into a Shift Handoff Template.  Once the user has entered all usual items, they can click "Show Preview" to review.</p>
-                                        <p>Once reviewed, the user can submit the handoff.  Upon submission, it will perform the following:</p>
-                                        <ol>
-                                            <li>Store the Handoff information into the site's database.</li>
-                                            <li>Copy the Shift Handoff body to the clipboard.</li>
-                                            <li>Open a new e-mail (depends on user's default e-mail application)</li>
-                                        </ol>
-                                        The user can then paste the contents of the Shift Handoff into the email body, and send to the appropriate recipients.
-                                </Card.Body>
+                                        <p>Allows a user to enter items to prepare a Shift Handoff.  Items are entered one at a time, and can be anything from Tickets worked, to future maintenances/customer visits/etc.</p>
+                                        <h5>Shift Info</h5>
+                                        <ul>
+                                            <li><strong>Shift</strong> - The Shift the user is currently working.</li>
+                                            <li><strong>Data Center</strong> - The shortname for the Data Center the user is currently working.</li>
+                                            <li><strong>Tech(s)</strong> - The user's name, as well as any other users that share the shift.</li>
+                                        </ul>
+                                        <h5>Item Input</h5>
+                                        <ul>
+                                            <li><strong>Item Type</strong> - The type of item to be added to the handoff.  The list is as follows:
+                                            <ul>
+                                                    <li><strong>Announcements</strong> - Used for when customers/vendors are to be expected on site.</li>
+                                                    <li><strong>Events</strong> - Any facility/customer based events that may have happened that may not have a ticket associated with it.</li>
+                                                    <li><strong>Scheduled Changes/Maintenance</strong> - Any Customer/Vendor maintenance that will occur on the next shift should be listed here.</li>
+                                                    <li><strong>Known Issues</strong> - For any issues that are known, and have a scheduled fix/resolution.</li>
+                                                    <li><strong>Tape Rotations</strong> - A Ticket item, for any Tape Rotation tickets that may have been worked.</li>
+                                                    <li><strong>Backups</strong> - A Ticket item, for any Backup-related tickets that the user may have interacted with.</li>
+                                                    <li><strong>Patching</strong> - A Ticket item, for any Patching tickets worked during the shift.</li>
+                                                    <li><strong>Other</strong> - A Ticket item, used for any tickets that don't meet the above criteria.</li>
+                                                    <li><strong>Notes</strong> - A generic note field.</li>
+                                                </ul>
+                                            </li>
+                                            <li><strong>Title</strong> - The 'subject' line for the item.  This field changes to "Customer" for Ticket-based items.</li>
+                                            <li><strong>TID(Ticket ID)</strong> - The TID for the ticket the user is entering.  NOTE: This field only appears for Ticket items.</li>
+                                            <li><strong>Notes</strong> - This is where the user will list any notes for the selected item.</li>
+                                        </ul>
+                                        <p>NOTE: "Add Item" can only be clicked once all fields in the "Item Input" section are filled.</p>
+                                        <p>"Show Preview" typically used once all shift items have been entered, this will show a pop-up of the generated Shift Handoff for review.</p>
+                                        <p>
+                                            "Send Report" will save the handoff to the database, copy the handoff to the user's clipboard, then open a new e-mail in their default e-mail client.
+                                            The user can then paste the contents of the Shift Handoff into the email body, and send to the appropriate recipients.
+                                        </p>
+                                        <h5>Edit/Remove Items</h5>
+                                        <p>The user can select any item that they have entered previously, then click "Edit Item" to load the Item in the "Item Input" section</p>
+                                        <p>"Remove Item" will immediately delete the selected item.</p>
+                                        <p>"Remove All" will ask the user if they would like to remove all items from the list.</p>
+                                    </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
                             <Card bg="dark">
@@ -50,7 +78,7 @@ class Main extends Component {
                                         </ul>
                                         <p>The "Shift" and "Data Center" fields will have a selection based on Handoffs stored in the Database.</p>
                                         <p>Clicking an entry will display the selected handoff on the page via a Modal.</p>
-                                </Card.Body>
+                                    </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
                             <Card bg="dark">
@@ -59,7 +87,7 @@ class Main extends Component {
                                     <Card.Body>
                                         <p>Generates a template for use in the creation of Amber Light tickets.</p>
                                         <p>Alerts will be saved to the database until removed.</p>
-                        </Card.Body>
+                                    </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
                             <Card bg="dark">
@@ -68,7 +96,7 @@ class Main extends Component {
                                     <Card.Body>
                                         <p>Generates a template for use in the creation of Combustible Materials tickets.</p>
                                         <p>Reports will be saved to the database until removed.</p>
-                            </Card.Body>
+                                    </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
                         </Accordion>

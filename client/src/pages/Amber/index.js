@@ -59,7 +59,6 @@ class Main extends Component {
         API.addAmber(body)
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res)
                     alert(res.data);
                     this.getAlerts();
                 }
@@ -94,7 +93,6 @@ class Main extends Component {
         let button = e.target;
         button.innerHTML = "Copied!";
         setTimeout(function () { button.innerHTML = "Copy Alert" }, 1500);
-        console.log(id)
         let div = document.querySelector(`#${id}`)
         div.setAttribute("contenteditable", true)
         div.setAttribute("style", "color:black;background-color:white")

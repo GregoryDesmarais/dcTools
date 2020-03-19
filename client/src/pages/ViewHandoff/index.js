@@ -16,10 +16,10 @@ class ViewHandoff extends Component {
     state = {
         show: false,
         shift: "",
-        shiftList: [],
         datacenter: "",
-        dcList: [],
         date: "",
+        shiftList: [],
+        dcList: [],
         data: [],
         preview: {
             date: "",
@@ -29,6 +29,14 @@ class ViewHandoff extends Component {
             items: ""
         },
     }
+
+    // clearFilter = () => {
+    //     this.setState({
+    //         shift: "",
+    //         datacenter: "",
+    //         date: "",
+    //     }, ()=> {this.getData()})
+    // }
 
     getData = () => {
         let tempDate = new Date(this.state.date);
@@ -52,9 +60,8 @@ class ViewHandoff extends Component {
         const { id, value } = event.target;
         this.setState({
             [id]: value
-        });
+        }, () => { this.getData() });
     }
-
 
     componentDidMount = () => {
         this.getData();
@@ -127,9 +134,16 @@ class ViewHandoff extends Component {
                                     />
                                 </Form.Group>
                                 <Form.Group>
-                                    <Button onClick={this.getData}>
-                                        Filter
-                                    </Button>
+                                    <Row>
+                                        <Col>
+                                            <Button onClick={this.getData}>
+                                                Filter
+                                            </Button>
+                                        </Col>
+                                        {/* <Col className="text-right">
+                                            <Button onClick={this.clearFilter}>Clear Filters</Button>
+                                        </Col> */}
+                                    </Row>
                                 </Form.Group>
                             </Col>
                         </Row>
@@ -142,25 +156,27 @@ class ViewHandoff extends Component {
                         </Row>
                         <Row>
                             <Col>
-                                {this.state.data.map(item => {
-                                    return (
-                                        <Row
-                                            key={item._id}
-                                            style={{ padding: "0" }}
-                                            className="btnRow"
-                                        >
-                                            <Col>
-                                                <Button
-                                                    variant="dark"
-                                                    className="reportBtn"
-                                                    onClick={() => this.showPreview(item._id)}
+                                {
+                                    this.state.data.length === 0 ? <h5>There are no reports for the filters you have selected.</h5>
+                                        : this.state.data.map(item => {
+                                            return (
+                                                <Row
+                                                    key={item._id}
+                                                    style={{ padding: "0" }}
+                                                    className="btnRow"
                                                 >
-                                                    {item.date} - {item.datacenter} - {item.shift} Shift
-                                            </Button>
-                                            </Col>
-                                        </Row>
-                                    )
-                                })}
+                                                    <Col>
+                                                        <Button
+                                                            variant="dark"
+                                                            className="reportBtn"
+                                                            onClick={() => this.showPreview(item._id)}
+                                                        >
+                                                            <h5>{item.date} - {item.datacenter} - {item.shift} Shift</h5>
+                                                        </Button>
+                                                    </Col>
+                                                </Row>
+                                            )
+                                        })}
                             </Col>
                         </Row>
                     </Col>

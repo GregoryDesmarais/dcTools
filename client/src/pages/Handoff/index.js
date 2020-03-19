@@ -39,7 +39,8 @@ class Handoff extends Component {
 
     //Save state data to LocalStorage whenever state changes
     componentDidUpdate = (prevProps, prevStates) => {
-        this.saveData()
+        this.saveData();
+        this.setSelectSize();
     }
 
     handleInputChange = event => {
@@ -47,9 +48,15 @@ class Handoff extends Component {
         this.setState({
             [id]: value,
         });
-
     }
 
+
+    setSelectSize = () => {
+        if (this.state.items.length < 4)
+            document.querySelector("#modify").size = 4;
+        else
+            document.querySelector("#modify").size = this.state.items.length + 1;
+    }
 
     //Save item to state.  Update fields accordingly.
     addItem = event => {
@@ -135,10 +142,14 @@ class Handoff extends Component {
 
     render() {
         const enable = this.checkitems()
-        return (<>
+        return (
             <Container>
                 <Row>
                     <Col lg={6} className="pb-6">
+                        <Row>
+                            <Col>
+                                <h4 className="text-center">Shift Info</h4></Col>
+                        </Row>
                         <Row>
                             <Col lg={6} className="shift">
                                 <Form.Group>
@@ -188,7 +199,10 @@ class Handoff extends Component {
                                 </Form.Group>
                             </Col>
                         </Row>
-                        <br /><br />
+                        <Row>
+                            <Col>
+                                <h4 className='text-center'>Item Input</h4></Col>
+                        </Row>
                         <Form>
                             <Row>
                                 <Col>
@@ -236,25 +250,33 @@ class Handoff extends Component {
                                 </Col>
                             </Row>
                             <Row>
-                                <Col lg={4} />
                                 <Col className="text-center">
                                     <Button variant="primary" type="submit" onClick={this.addItem} disabled={!enable}>Add Item</Button>
+                                </Col>
+                                <Col lg={4} />
+                                <Col>
+                                    <Button onClick={this.showPreview}>Preview Handoff</Button>
                                 </Col>
                                 <Col lg={4} />
                             </Row>
                         </Form>
                     </Col>
                     <Col lg={6}>
+                        <Row>
+                            <Col>
+                                <h4 className='text-center'>Edit/Remove Items</h4>
+                            </Col>
+                        </Row>
                         <Form>
                             <Row>
                                 <Col>
                                     <Form.Group controlId="modify">
                                         <Form.Label>Edit/Remove Items</Form.Label>
                                         <Form.Control as="select" onChange={this.handleInputChange}>
-                                            <option value="">Select Item</option>
+                                            {/* <option value="">Select Item</option> */}
                                             {this.state.items.map((item, i) => {
                                                 return (
-                                                    <option key={i} value={i}>{item.type} - {item.title}</option>
+                                                    <option key={i} value={i}>{item.type} - {item.TID !== "" ? `${item.TID} - ` : ""}{item.title}</option>
                                                 )
                                             })}
                                         </Form.Control>
@@ -270,11 +292,6 @@ class Handoff extends Component {
                                 </Col>
                                 <Col>
                                     <Button type="submit" variant="danger" onClick={(event) => this.editItem(event, "all")}>Remove All</Button>
-                                </Col>
-                            </Row>
-                            <Row className="text-center">
-                                <Col>
-                                    <Button onClick={this.showPreview}>Show Preview</Button>
                                 </Col>
                             </Row>
                         </Form>
@@ -296,8 +313,7 @@ class Handoff extends Component {
                         </Modal.Body>
                     </Modal>
                 </Row>
-            </Container >
-        </>);
+            </Container>);
     }
 }
 

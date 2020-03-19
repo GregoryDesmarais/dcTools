@@ -82,7 +82,6 @@ class Combustible extends Component {
         let button = e.target;
         button.innerHTML = "Copied!";
         setTimeout(function () { button.innerHTML = "Copy Report" }, 1500);
-        console.log(id)
         let div = document.querySelector(`#${id}`)
         div.setAttribute("contenteditable", true)
         div.setAttribute("style", "color:black;background-color:white")

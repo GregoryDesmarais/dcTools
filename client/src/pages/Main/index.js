@@ -53,7 +53,7 @@ class Main extends Component {
                                             <li><strong>Notes</strong> - This is where the user will list any notes for the selected item.</li>
                                         </ul>
                                         <p>NOTE: "Add Item" can only be clicked once all fields in the "Item Input" section are filled.</p>
-                                        <p>"Show Preview" typically used once all shift items have been entered, this will show a pop-up of the generated Shift Handoff for review.</p>
+                                        <p>"Preview Handoff" - used once all shift items have been entered, this will show a pop-up of the generated Shift Handoff for review.</p>
                                         <p>
                                             "Send Report" will save the handoff to the database, copy the handoff to the user's clipboard, then open a new e-mail in their default e-mail client.
                                             The user can then paste the contents of the Shift Handoff into the email body, and send to the appropriate recipients.

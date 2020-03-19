@@ -16,10 +16,10 @@ class ViewHandoff extends Component {
     state = {
         show: false,
         shift: "",
-        shiftList: [],
         datacenter: "",
-        dcList: [],
         date: "",
+        shiftList: [],
+        dcList: [],
         data: [],
         preview: {
             date: "",
@@ -29,6 +29,14 @@ class ViewHandoff extends Component {
             items: ""
         },
     }
+
+    // clearFilter = () => {
+    //     this.setState({
+    //         shift: "",
+    //         datacenter: "",
+    //         date: "",
+    //     }, ()=> {this.getData()})
+    // }
 
     getData = () => {
         let tempDate = new Date(this.state.date);
@@ -52,8 +60,7 @@ class ViewHandoff extends Component {
         const { id, value } = event.target;
         this.setState({
             [id]: value
-        });
-        this.getData();
+        }, () => { this.getData() });
     }
 
     componentDidMount = () => {
@@ -127,9 +134,16 @@ class ViewHandoff extends Component {
                                     />
                                 </Form.Group>
                                 <Form.Group>
-                                    <Button onClick={this.getData}>
-                                        Filter
-                                    </Button>
+                                    <Row>
+                                        <Col>
+                                            <Button onClick={this.getData}>
+                                                Filter
+                                            </Button>
+                                        </Col>
+                                        {/* <Col className="text-right">
+                                            <Button onClick={this.clearFilter}>Clear Filters</Button>
+                                        </Col> */}
+                                    </Row>
                                 </Form.Group>
                             </Col>
                         </Row>

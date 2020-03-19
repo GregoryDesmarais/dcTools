@@ -255,7 +255,7 @@ class Handoff extends Component {
                                 </Col>
                                 <Col lg={4} />
                                 <Col>
-                                    <Button onClick={this.showPreview}>Show Preview</Button>
+                                    <Button onClick={this.showPreview}>Preview Handoff</Button>
                                 </Col>
                                 <Col lg={4} />
                             </Row>
@@ -276,7 +276,7 @@ class Handoff extends Component {
                                             {/* <option value="">Select Item</option> */}
                                             {this.state.items.map((item, i) => {
                                                 return (
-                                                    <option key={i} value={i}>{item.type} - {item.title}</option>
+                                                    <option key={i} value={i}>{item.type} - {item.TID !== "" ? `${item.TID} - ` : ""}{item.title}</option>
                                                 )
                                             })}
                                         </Form.Control>

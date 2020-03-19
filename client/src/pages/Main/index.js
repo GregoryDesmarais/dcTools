@@ -77,7 +77,7 @@ class Main extends Component {
                                             <li>Date - To seach for all Handoffs for a specific date.</li>
                                         </ul>
                                         <p>The "Shift" and "Data Center" fields will have a selection based on Handoffs stored in the Database.</p>
-                                        <p>Clicking an entry will display the selected handoff on the page via a Modal.</p>
+                                        <p>Clicking an entry will display the selected handoff.</p>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
@@ -85,8 +85,26 @@ class Main extends Component {
                                 <Accordion.Toggle as={Card.Header} eventKey="2"><h5>Amber Lights</h5></Accordion.Toggle>
                                 <Accordion.Collapse eventKey="2">
                                     <Card.Body>
-                                        <p>Generates a template for use in the creation of Amber Light tickets.</p>
-                                        <p>Alerts will be saved to the database until removed.</p>
+                                        <p>
+                                            Generates a template for use in the creation of Amber Light tickets.
+                                            Alerts will be saved to the database until removed.
+                                        </p>
+                                        <h5>Add New Alert</h5>
+                                        <ul>
+                                            <li><strong>Cabinet Location</strong> - Name of the cabinet of the device in alarm.</li>
+                                            <li><strong>RMU</strong> - Rack Mount Unit, the numrical level that the device is mounted at.</li>
+                                            <li><strong>Customer</strong> - The Customer that owns the device.</li>
+                                            <li><strong>Device Type</strong> - The Make and Model of the device, if available.</li>
+                                            <li><strong>Device Label</strong> - The device's external label, if available.</li>
+                                            <li><strong>SN/Service Tag</strong> - Device's serial number or service tag, if available.</li>
+                                            <li><strong>Alert</strong> - The alert on the device.  The more detail you can provide (readings from a built in panel), the better for the customer for troubleshooting.</li>
+                                        </ul>
+                                        <h5>View Alerts</h5>
+                                        <p>
+                                            This section will show the current alerts in the database, which should be used to create customer-facing tickets/emails.  The user can click each header to show the related alert.
+                                            The user can then use the "Copy Alert" button to copy the text to the clipboard for easy pasting into a ticket/email.  Once a ticket is opened, the user should follow their standard
+                                            procedure (marking the device, etc), then delete the alert in the system.
+                                        </p>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>
@@ -94,8 +112,20 @@ class Main extends Component {
                                 <Accordion.Toggle as={Card.Header} eventKey="3"><h5>Combustible Report</h5></Accordion.Toggle>
                                 <Accordion.Collapse eventKey="3">
                                     <Card.Body>
-                                        <p>Generates a template for use in the creation of Combustible Materials tickets.</p>
-                                        <p>Reports will be saved to the database until removed.</p>
+                                        <p>Generates a template for use in the creation of Combustible Materials tickets. Reports will be saved to the database until removed.</p>
+                                        <h5>Add New Report</h5>
+                                        <ul>
+                                            <li><strong>Cabinet Location</strong> - Name of the cabinet of the device in alarm.</li>
+                                            <li><strong>Customer</strong> - The Customer that owns the device.</li>
+                                            <li><strong>Data Center</strong> - Site shortname.</li>
+                                            <li><strong>Items</strong> - Description of combustible items in the cabinet.</li>
+                                        </ul>
+                                        <h5>View Active Reports</h5>
+                                        <p>
+                                            As the same with the Amber Light tool, this section will show all active combustible reports in the database.  The user can click each header to show the related alert.
+                                            The user can then use the "Copy Alert" button to copy the text to the clipboard for easy pasting into a ticket/email.  Once a ticket is opened, the user should follow their standard
+                                            procedure, then delete the alert in the system.
+                                        </p>
                                     </Card.Body>
                                 </Accordion.Collapse>
                             </Card>

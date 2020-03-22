@@ -1,17 +1,17 @@
 # dcTools - [Heroku](https://dctools.herokuapp.com/)
 
 ## Introduction
-dcTools is a collection of tools created to provide better QoL for certain tasks for Data Center Technicians.  The first version was written with HTML, CSS, JavaScript/jQuery, and PHP.  The entire site is mobile-responsive, and is the intended format for the Amber Light and Cardboard Report tools.
+dcTools is a collection of tools created to provide better QoL for Data Center Technicians.  The first version was written with HTML, CSS, JavaScript/jQuery, and PHP.  The current version is running using the MERN stack.  The entire site is mobile-responsive, and is the intended format for the Amber Light and Cardboard Report tools.
 
 ## Technologies Used
 - MongoDB
   - Mongoose
-- Node
-  - Express
-  - Axios
+- Express
 - React
   - react-bootstrap
   - react-router-dom
+- Node
+  - Axios
 
 
 ## Pages
@@ -36,4 +36,4 @@ Periodically, the Data Center Technician is to check servers in the Data Center 
 
 ### Combusitble Report
 ![Cardboard Report](/imgs/cardboard.png)
-This tool has roughly the same functionality as the Amber Light tool.  Typically, the Data Center is to be audited for combustible materials stored in the cabinets.  This tool provides a way to store the information for any offending cabinets, and allows the user to recall the information in template form, which can then be sent to the customer via a ticket.
+This tool has roughly the same functionality as the Amber Light tool.  Data Centers are to be audited for combustible materials stored in the cabinets.  This tool provides a way to store the information for any offending cabinets, and allows the user to recall the information in template form, which can then be sent to the customer via a ticket.

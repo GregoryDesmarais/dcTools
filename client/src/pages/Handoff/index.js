@@ -253,11 +253,9 @@ class Handoff extends Component {
                                 <Col className="text-center">
                                     <Button variant="primary" type="submit" onClick={this.addItem} disabled={!enable}>Add Item</Button>
                                 </Col>
-                                <Col lg={4} />
-                                <Col>
-                                    <Button onClick={this.showPreview}>Preview Handoff</Button>
-                                </Col>
-                                <Col lg={4} />
+                                    <Col className="text-center">
+                                        <Button onClick={this.showPreview}>Preview Handoff</Button>
+                                    </Col>
                             </Row>
                         </Form>
                     </Col>

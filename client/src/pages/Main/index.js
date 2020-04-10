@@ -15,6 +15,9 @@ class Main extends Component {
                     <Col>
                         <Jumbotron>
                             <h1 className="text-center">DC Tools</h1>
+                            {/* <h4 className="text-center">
+                                DC Tools is a set of Quality of Life tools created for Data Center Technicians.
+                            </h4> */}
                             <h4 className="text-center">Click the headers below for information/usage of each tool.</h4>
                         </Jumbotron>
                     </Col>
@@ -23,10 +26,13 @@ class Main extends Component {
                     <Col>
                         <Accordion>
                             <Card bg="dark">
-                                <Accordion.Toggle as={Card.Header} eventKey="0"><h5>Shift Handoff</h5></Accordion.Toggle>
+                                <Accordion.Toggle as={Card.Header} eventKey="0">
+                                    <h5>Shift Handoff - <a href="/handoff">Open Tool</a></h5>
+                                    <p>Allows a user to enter items to prepare a Shift Handoff.  Items are entered one at a time, and can be anything from Tickets worked, to future maintenances/customer visits/etc.</p>
+                                    
+                                </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="0">
                                     <Card.Body>
-                                        <p>Allows a user to enter items to prepare a Shift Handoff.  Items are entered one at a time, and can be anything from Tickets worked, to future maintenances/customer visits/etc.</p>
                                         <h5>Shift Info</h5>
                                         <ul>
                                             <li><strong>Shift</strong> - The Shift the user is currently working.</li>
@@ -66,10 +72,12 @@ class Main extends Component {
                                 </Accordion.Collapse>
                             </Card>
                             <Card bg="dark">
-                                <Accordion.Toggle as={Card.Header} eventKey="1"><h5>View Handoffs</h5></Accordion.Toggle>
+                                <Accordion.Toggle as={Card.Header} eventKey="1">
+                                    <h5>View Handoffs - <a href="/viewhandoff">Open Tool</a></h5>
+                                    <p>This tool will allow the user view any Handoffs in the database.</p>
+                                </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="1">
                                     <Card.Body>
-                                        <p>This tool will allow the user view any Handoffs in the database.</p>
                                         <p>Handoffs can be filtered by the following:</p>
                                         <ul>
                                             <li>Shift - Typically 1st, 2nd, 3rd.</li>
@@ -82,13 +90,15 @@ class Main extends Component {
                                 </Accordion.Collapse>
                             </Card>
                             <Card bg="dark">
-                                <Accordion.Toggle as={Card.Header} eventKey="2"><h5>Amber Lights</h5></Accordion.Toggle>
+                                <Accordion.Toggle as={Card.Header} eventKey="2">
+                                    <h5>Amber Lights - <a href="/amber">Open Tool</a></h5>
+                                    <p>
+                                        Generates a template for use in the creation of Amber Light tickets.
+                                        Alerts will be saved to the database until removed.
+                                    </p>
+                                </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="2">
                                     <Card.Body>
-                                        <p>
-                                            Generates a template for use in the creation of Amber Light tickets.
-                                            Alerts will be saved to the database until removed.
-                                        </p>
                                         <h5>Add New Alert</h5>
                                         <ul>
                                             <li><strong>Cabinet Location</strong> - Name of the cabinet of the device in alarm.</li>
@@ -109,10 +119,12 @@ class Main extends Component {
                                 </Accordion.Collapse>
                             </Card>
                             <Card bg="dark">
-                                <Accordion.Toggle as={Card.Header} eventKey="3"><h5>Combustible Report</h5></Accordion.Toggle>
+                                <Accordion.Toggle as={Card.Header} eventKey="3">
+                                    <h5>Combustible Report - <a href="/combustible">Open Tool</a></h5>
+                                    <p>Generates a template for use in the creation of Combustible Materials tickets. Reports will be saved to the database until removed.</p>
+                                </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="3">
                                     <Card.Body>
-                                        <p>Generates a template for use in the creation of Combustible Materials tickets. Reports will be saved to the database until removed.</p>
                                         <h5>Add New Report</h5>
                                         <ul>
                                             <li><strong>Cabinet Location</strong> - Name of the cabinet of the device in alarm.</li>

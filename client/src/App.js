@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Main from "./pages/Main"
-import Handoff from "./pages/Handoff"
-import ViewHandoff from "./pages/ViewHandoff"
+// import Handoff from "./pages/Handoff"
+// import ViewHandoff from "./pages/ViewHandoff"
 // import Users from "./pages/Users"
 import Amber from "./pages/Amber"
 import Combustible from "./pages/Combustible"
@@ -33,9 +33,9 @@ function App() {
         <NavBar path={path.location.pathname} />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/handoff" render={props => (<Handoff createEmail={createEmail}/>)} />
+          {/* <Route exact path="/handoff" render={props => (<Handoff createEmail={createEmail}/>)} /> */}
           {/* <Route exact path="/users" component={Users} /> */}
-          <Route exact path="/viewhandoff" component={ViewHandoff} />
+          {/* <Route exact path="/viewhandoff" component={ViewHandoff} /> */}
           <Route exact path="/amber" render={props => (<Amber createEmail={createEmail}/>)} />
           <Route exact path="/combustible" render={props => (<Combustible createEmail={createEmail}/>)} />
         </Switch>

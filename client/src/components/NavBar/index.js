@@ -27,8 +27,8 @@ componentDidUpdate = (a,b) => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         {/* <Nav.Link href='/' className={this.props.path === "/" ? "active" : ""}>Home</Nav.Link> */}
-                        <Nav.Link href='/handoff' className={this.props.path === "/handoff" ? "active" : ""}>Shift Handoff</Nav.Link>
-                        <Nav.Link href='/viewhandoff' className={this.props.path === "/viewhandoff" ? "active" : ""}>View Handoffs</Nav.Link>
+                        {/* <Nav.Link href='/handoff' className={this.props.path === "/handoff" ? "active" : ""}>Shift Handoff</Nav.Link> */}
+                        {/* <Nav.Link href='/viewhandoff' className={this.props.path === "/viewhandoff" ? "active" : ""}>View Handoffs</Nav.Link> */}
                         <Nav.Link href='/amber' className={this.props.path === "/amber" ? "active" : ""}>Amber Lights</Nav.Link>
                         <Nav.Link href='/combustible' className={this.props.path === "/combustible" ? "active" : ""}>Combustible Report</Nav.Link>
                         {/* <Nav.Link href='/users' className={this.props.path === "/users" ? "active" : ""}>Users</Nav.Link> */}

@@ -25,7 +25,7 @@ class Main extends Component {
                 <Row>
                     <Col>
                         <Accordion>
-                            <Card bg="dark">
+                            {/* <Card bg="dark">
                                 <Accordion.Toggle as={Card.Header} eventKey="0">
                                     <h5>Shift Handoff - <a href="/handoff">Open Tool</a></h5>
                                     <p>Allows a user to enter items to prepare a Shift Handoff.  Items are entered one at a time, and can be anything from Tickets worked, to future maintenances/customer visits/etc.</p>
@@ -88,7 +88,7 @@ class Main extends Component {
                                         <p>Clicking an entry will display the selected handoff.</p>
                                     </Card.Body>
                                 </Accordion.Collapse>
-                            </Card>
+                            </Card> */}
                             <Card bg="dark">
                                 <Accordion.Toggle as={Card.Header} eventKey="2">
                                     <h5>Amber Lights - <a href="/amber">Open Tool</a></h5>

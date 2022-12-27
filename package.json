@@ -9,15 +9,15 @@
         "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
         "client": "cd client && npm run start",
         "install": "cd client && npm install",
-        "build": "cd client && npm run build && mv build ../build",
+        "build": "rm -rf build && cd client && npm run build && mv build ../build",
         "heroku-postbuild": "npm run build",
         "seed": "node scripts/seedDB.js"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "concurrently": "^4.1.0",
-        "nodemon": "^1.18.7"
+        "concurrently": "^7.6.0",
+        "nodemon": "^2.0.20"
     },
     "dependencies": {
         "axios": "^0.21.2",
@@ -26,7 +26,7 @@
         "dotenv": "^8.2.0",
         "express": "^4.16.3",
         "if-env": "^1.0.4",
-        "jsonwebtoken": "^8.5.1",
+        "jsonwebtoken": "^9.0.0",
         "mongoose": "^5.9.1"
     }
 }
